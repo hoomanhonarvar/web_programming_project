@@ -127,7 +127,9 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 REST_FRAMEWORK={
-    'DEFAULT_PERMISSION_CLASSES': []
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ]
     ,
     'DEFAULT_AUTHENTICATION_CLASSES': [],
 }
@@ -135,3 +137,8 @@ REST_FRAMEWORK={
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# REST_FRAMEWORK ={
+#     'DEFAULT_PERMISSION_CLASSES':[
+#         'rest_framework.permissions.IsAuthenticated'
+#     ]
+# }
