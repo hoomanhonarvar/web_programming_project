@@ -1,5 +1,5 @@
 from django.db import models
-from user.models import user
+from user.models import user_custom
 from restaurant.models import restaurant
 from address.models import address
 from dish.models import dish
@@ -9,7 +9,7 @@ OPTION=(
     ('C','cancel'),
 )
 class cart (models.Model):
-    user_id=models.ForeignKey(user,null=False,on_delete=models.CASCADE)
+    user_id=models.ForeignKey(user_custom,null=False,on_delete=models.CASCADE)
     rest_id=models.ForeignKey(restaurant,null=False,on_delete=models.CASCADE)
     add_id=models.ForeignKey(address,null=False,on_delete=models.CASCADE)
     total=models.FloatField()

@@ -1,5 +1,5 @@
 from django.db import models
-from user.models import user
+from user.models import user_custom
 from restaurant.models import restaurant
 # Create your models here.
 class address(models.Model):
@@ -12,11 +12,11 @@ class address(models.Model):
 
 
 class Home_user_add(models.Model):
-    user_id=models.ForeignKey(user,null=True,on_delete=models.CASCADE)
+    user_id=models.ForeignKey(user_custom,null=True,on_delete=models.CASCADE)
     add_id=models.ForeignKey(address,null=True,on_delete=models.CASCADE)
 
 class Work_user_add(models.Model):
-    user_id=models.ForeignKey(user,null=True,on_delete=models.CASCADE)
+    user_id=models.ForeignKey(user_custom,null=True,on_delete=models.CASCADE)
     add_id=models.ForeignKey(address,null=True,on_delete=models.CASCADE)
 
 class Rest_user_add(models.Model):
