@@ -36,7 +36,8 @@ class UserManager(BaseUserManager):
         user=self.model(username=username,email=self.normalize_email(email),)
         user.set_password(password)
         user.save()
-    def create_superUser(self,username,email,password=None):
+        return user
+    def create_superuser(self,username,email,password=None):
         if password is None:
             raise TypeError('users should have a password')
         user= self.create_user(username,email,password)
