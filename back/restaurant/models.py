@@ -19,6 +19,11 @@ class restaurant (models.Model):
     delivery=models.CharField(default='free',max_length=25)
     name=models.CharField(max_length=20)
     image=models.ImageField(upload_to='images/restaurant/')
+
+    street_name = models.CharField(max_length=20,default="")
+    city = models.CharField(max_length=20,default="")
+    zipcode = models.CharField(max_length=12,default="")
+    state = models.CharField(max_length=20,default="")
     def __str__(self):
         return self.name
 

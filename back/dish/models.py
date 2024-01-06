@@ -9,6 +9,6 @@ class dish(models.Model):
     fee=models.CharField(default='free',max_length=20)
     rate=models.IntegerField(default=5,validators=[MinValueValidator(0),
     MaxValueValidator(5)])
-    rest_id=models.ForeignKey(restaurant,null=True,on_delete=models.CASCADE)
+    rest_id=models.ForeignKey(to=restaurant,null=True,on_delete=models.CASCADE)
     def __str__(self):
         return self.title
