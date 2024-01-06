@@ -1,7 +1,7 @@
 import jwt
 from rest_framework.generics import ListAPIView , RetrieveUpdateDestroyAPIView
 from django.shortcuts import get_object_or_404
-from .serializers import List_UserSerializer,RegisterSerializer,EmailVerificationSerializer
+from .serializers import List_UserSerializer,RegisterSerializer,EmailVerificationSerializer,LoginSerializer
 from .models import user_custom,User
 from rest_framework.permissions import IsAdminUser
 from rest_framework import status,views
@@ -67,3 +67,13 @@ class VerifyEmail(views.APIView):
             return Response({'error': 'activation expired'}, status=status.HTTP_400_BAD_REQUEST)
         except jwt.exceptions.DecodeError as identrifier:
             return Response({'error': 'Invalid token'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class LoginAPIView(GenericAPIView):
+    serializer_class = LoginSerializer
+    def post(self,request):
+        serializer= self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+
+        return Response(serializer.data,status=status.HTTP_200_OK)
