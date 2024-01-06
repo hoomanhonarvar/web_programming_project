@@ -148,12 +148,23 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #         'rest_framework.permissions.IsAuthenticated'
 #     ]
 # }
-EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS=True
-EMAIL_HOST='smtp.gmail.com'
+# EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
+
+EMAIL_HOST='localhost'
 EMAIL_PORT=587
+
+
+# EMAIL_PORT=465
+
 EMAIL_HOST_USER ='backend.webprogramming@gmail.com'
 EMAIL_HOST_PASSWORD= '8585honarvar'
+EMAIL_USE_TLS=True
+
+
+
+
+CORS_ALLOW_ALL_ORIGINS=True
 
 REST_FRAMEWORK={
     'NON_FIELD_ERRORS_KEY': 'error'
