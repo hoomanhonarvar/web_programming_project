@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404
 from .serializers import List_UserSerializer,RegisterSerializer,EmailVerificationSerializer
 from .models import user_custom,User
 from rest_framework.permissions import IsAdminUser
-from rest_framework import status
+from rest_framework import status,views
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
@@ -17,6 +17,8 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 import jwt
 from django.conf import  settings
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 class ListOfUsers(ListAPIView):
     queryset = user_custom.objects.all()
     serializer_class = List_UserSerializer
@@ -47,8 +49,10 @@ class RegisterView(GenericAPIView):
         return Response(user_data,status=status.HTTP_201_CREATED)
 
 
-class VerifyEmail(GenericAPIView):
+class VerifyEmail(views.APIView):
     serializer_class = EmailVerificationSerializer
+    token_param_config=openapi.Parameter('token',in_=openapi.IN_QUERY,description='Description',type=openapi.TYPE_STRING)
+    @swagger_auto_schema(manual_parameters=(token_param_config))
     def get(self,request):
         token=request.GET.get('token')
         try:
