@@ -10,7 +10,12 @@ class List_UserSerializer(serializers.ModelSerializer):
         #     'full_name','id'
         # )
         # exclude=('full_name','id')
+class ResendEmailSerializer(serializers.ModelSerializer):
+    email=serializers.EmailField()
 
+    class Meta:
+        model=User
+        fields=['email']
 class UserRegistrationsSerializer(serializers.Serializer):
     email = serializers.EmailField()
     username = serializers.CharField()
@@ -70,3 +75,6 @@ class LoginSerializer(serializers.ModelSerializer):
 
         }
         return super().validate(attrs)
+
+
+
