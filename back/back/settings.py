@@ -50,7 +50,15 @@ INSTALLED_APPS = [
 
 
 ]
-
+SWAGGER_SETTINGS={
+    'SECURITY_DEFINITIONS':{
+        'hooman':{
+            'type':'apiKey',
+            'name':'Authorization',
+            'in':'header'
+        }
+    }
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
