@@ -55,6 +55,8 @@ class User(AbstractBaseUser,PermissionsMixin):
     is_staff=models.BooleanField(default=False)
     created_at=models.DateTimeField(auto_now_add=True)
     update_at=models.DateTimeField(auto_now=True)
+    phone_number = PhoneNumberField(max_length=12)
+    image = models.ImageField(upload_to='images/users/')
 
     USERNAME_FIELD='email'
     REQUIRED_FIELDS = ['username']

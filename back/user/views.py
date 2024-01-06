@@ -2,7 +2,7 @@ import jwt
 from rest_framework.generics import ListAPIView , RetrieveUpdateDestroyAPIView
 from django.shortcuts import get_object_or_404
 from .serializers import List_UserSerializer,RegisterSerializer,EmailVerificationSerializer,LoginSerializer
-from .models import user_custom,User
+from .models import User
 from rest_framework.permissions import IsAdminUser
 from rest_framework import status,views
 from rest_framework.decorators import api_view, permission_classes
@@ -19,12 +19,12 @@ import jwt
 from django.conf import  settings
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
-class ListOfUsers(ListAPIView):
-    queryset = user_custom.objects.all()
+class ListOfUsersView(ListAPIView):
+    queryset = User.object.all()
     serializer_class = List_UserSerializer
     permission_classes = (IsAdminUser,)
 class userDetail(RetrieveUpdateDestroyAPIView):
-    queryset = user_custom.objects.all()
+    queryset = User.object.all()
     serializer_class = List_UserSerializer
 
 class RegisterView(GenericAPIView):

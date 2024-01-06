@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import user_custom,User
+from .models import User
 from django.contrib import auth
 from rest_framework.exceptions import AuthenticationFailed
 class List_UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model=user_custom
+        model=User
         fields="__all__"
         #     (
         #     'full_name','id'
