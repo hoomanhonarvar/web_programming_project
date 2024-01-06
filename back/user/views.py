@@ -52,14 +52,14 @@ class RegisterView(GenericAPIView):
 class VerifyEmail(views.APIView):
     serializer_class = EmailVerificationSerializer
     token_param_config=openapi.Parameter('token',in_=openapi.IN_QUERY,description='Description',type=openapi.TYPE_STRING)
-    @swagger_auto_schema(manual_parameters=(token_param_config))
+    @swagger_auto_schema(manual_parameters=[token_param_config])
     def get(self,request):
         token=request.GET.get('token')
         try:
-            payload= jwt.decode(token,settings.SECRET_KEY)
+            payload= jwt.decode(token,settings.SECRET_KEY,algorithms=['HS256'])
             user=User.object.get(id=payload['user_id'])
             if not user.is_varified:
-                user.is_varified=True
+                user.is_varified = True
                 user.save()
             return Response( {'email':'Successfully activated'},status=status.HTTP_201_CREATED)
 
