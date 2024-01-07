@@ -140,5 +140,13 @@ class RequestPasswordResetEmail(GenericAPIView):
 
 class PasswordTokenCheckAPIView(GenericAPIView):
     def get(self,request,uidb64,token):
-        pass
+        try:
+            id=smart_str(urlsafe_base64_decode(uidb64))
+            user=User.object.get(id=id)
 
+            if not PasswordResetTokenGenerator().check_token(user,token):
+                return Response({'error': 'Token is not valid, please requset a new one'},status=status.HTTP_401_UNAUTHORIZED)
+
+            return Response({'success':True,'message':'Credential is Valid','uidb64':uidb64,'token':token},status=status.HTTP_200_OK)
+        except DjangoUnicodeDecodeError as identifier:
+            return Response({'error':'Token is not valid, please requset a new one'},status=status.HTTP_401_UNAUTHORIZED)
