@@ -19,6 +19,7 @@ import jwt
 from django.conf import  settings
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
+from .renderers import UserRenderer
 class ListOfUsersView(ListAPIView):
     queryset = User.object.all()
     serializer_class = List_UserSerializer
@@ -29,6 +30,7 @@ class userDetail(RetrieveUpdateDestroyAPIView):
 
 class RegisterView(GenericAPIView):
     serializer_class = RegisterSerializer
+    renderer_classes = (UserRenderer,)
     def post(self,request):
         # User.object.filter(is_varified=False).exclude(is_superuser=True).delete()
         user = request.data
@@ -103,3 +105,8 @@ class LoginAPIView(GenericAPIView):
 
 
         return Response(serializer.data,status=status.HTTP_200_OK)
+
+
+class RequestPasswordResetEmail(GenericAPIView):
+    def post(self,request):
+        pass

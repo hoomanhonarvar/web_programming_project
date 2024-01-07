@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
+import datetime
 import os
 from datetime import timedelta
 from pathlib import Path
@@ -52,11 +53,14 @@ INSTALLED_APPS = [
 ]
 SWAGGER_SETTINGS={
     'SECURITY_DEFINITIONS':{
-        'hooman':{
+        'Bearer':{
             'type':'apiKey',
             'name':'Authorization',
             'in':'header'
         }
+        ,
+    'LOGIN_URL': 'rest_framework:login',
+    'LOGOUT_URL': 'rest_framework:logout'
     }
 }
 MIDDLEWARE = [
@@ -150,8 +154,8 @@ REST_FRAMEWORK={
     ],
 }
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=1),
 }
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
