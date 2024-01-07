@@ -2,7 +2,9 @@ from rest_framework import serializers
 from .models import User
 from django.contrib import auth
 from rest_framework.exceptions import AuthenticationFailed
+
 class List_UserSerializer(serializers.ModelSerializer):
+
     class Meta:
         model=User
         fields="__all__"
@@ -77,4 +79,17 @@ class LoginSerializer(serializers.ModelSerializer):
         return super().validate(attrs)
 
 
+
+class RequestPasswordResetEmailSerializer(serializers.Serializer):
+    email=serializers.EmailField(min_length=2)
+    class Meta:
+
+        fields=['email']
+
+
+    def validate(self, attrs):
+
+        email=attrs['data'].get('email','')
+
+        return super().validate(attrs)
 

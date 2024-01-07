@@ -1,7 +1,7 @@
 import jwt
 from rest_framework.generics import ListAPIView , RetrieveUpdateDestroyAPIView
 from django.shortcuts import get_object_or_404
-from .serializers import List_UserSerializer,RegisterSerializer,EmailVerificationSerializer,LoginSerializer,ResendEmailSerializer
+from .serializers import List_UserSerializer,RegisterSerializer,EmailVerificationSerializer,LoginSerializer,ResendEmailSerializer,RequestPasswordResetEmailSerializer
 from .models import User
 from rest_framework.permissions import IsAdminUser
 from rest_framework import status,views
@@ -20,6 +20,15 @@ from django.conf import  settings
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 from .renderers import UserRenderer
+
+
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.utils.encoding import smart_str, force_str, DjangoUnicodeDecodeError, smart_bytes
+from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
+from django.contrib.sites.shortcuts import get_current_site
+from django.urls import reverse
+from .utils import Util
+
 class ListOfUsersView(ListAPIView):
     queryset = User.object.all()
     serializer_class = List_UserSerializer
@@ -108,5 +117,28 @@ class LoginAPIView(GenericAPIView):
 
 
 class RequestPasswordResetEmail(GenericAPIView):
+    serializer_class = RequestPasswordResetEmailSerializer
     def post(self,request):
+        # data={'request':request,'data':request.data}
+        serializer=self.serializer_class(data=request.data)
+        email=request.data['email']
+
+        if User.object.filter(email=email).exists():
+            user=User.object.get(email=email)
+
+            uidb64=urlsafe_base64_encode(smart_bytes(user.id))
+            token=PasswordResetTokenGenerator().make_token(user)
+            current_site = get_current_site(request=request).domain
+            relativeLink = reverse('password-reset-confirm',kwargs={'uidb64':uidb64,'token':token})
+            absurl = 'http://' + current_site + relativeLink
+            email_body = 'Hi \n \tUse link below to reset your password \n' + absurl
+            data = {'email_body': email_body, 'email_subject': 'Reset your password', 'to_email': user.email}
+            Util.send_email(data)
+        return Response({'success':'We have sent you a link to reset your password'},status=status.HTTP_200_OK)
+
+
+
+class PasswordTokenCheckAPIView(GenericAPIView):
+    def get(self,request,uidb64,token):
         pass
+
