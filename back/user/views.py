@@ -1,7 +1,7 @@
 import jwt
 from rest_framework.generics import ListAPIView , RetrieveUpdateDestroyAPIView
 from django.shortcuts import get_object_or_404
-from .serializers import List_UserSerializer,RegisterSerializer,EmailVerificationSerializer,LoginSerializer,ResendEmailSerializer,RequestPasswordResetEmailSerializer
+from .serializers import List_UserSerializer,RegisterSerializer,EmailVerificationSerializer,LoginSerializer,ResendEmailSerializer,RequestPasswordResetEmailSerializer,SetNewPasswordSerializer
 from .models import User
 from rest_framework.permissions import IsAdminUser
 from rest_framework import status,views
@@ -150,3 +150,11 @@ class PasswordTokenCheckAPIView(GenericAPIView):
             return Response({'success':True,'message':'Credential is Valid','uidb64':uidb64,'token':token},status=status.HTTP_200_OK)
         except DjangoUnicodeDecodeError as identifier:
             return Response({'error':'Token is not valid, please requset a new one'},status=status.HTTP_401_UNAUTHORIZED)
+class SetNewPasswordAPIView(GenericAPIView):
+    serializer_class = SetNewPasswordSerializer
+
+    def patch(self,request):
+        serializer=self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        return Response({'success':True,'message':'Password reset successfully'},status= status.HTTP_200_OK)
+
