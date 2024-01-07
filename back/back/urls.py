@@ -41,7 +41,9 @@ urlpatterns = [
     path('api-auth/',include('rest_framework.urls')),
     path('user/',include('user.urls')),
     path('swagger<format>/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
-    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('api/api.josn/', schema_view.without_ui(cache_timeout=0), name='json-swagger'),
+
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path('address/', include('address.urls')),
 

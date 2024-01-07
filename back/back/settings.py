@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'rest_framework_simplejwt',
     'drf_yasg',
-    'corsheaders'
+    'corsheaders',
+    'rest_framework_simplejwt.token_blacklist'
 
 
 ]
