@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'rest_framework_simplejwt',
     'drf_yasg',
+    'corsheaders'
 
 
 ]
@@ -68,6 +69,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -182,8 +184,7 @@ EMAIL_USE_TLS=True
 
 
 
-CORS_ALLOW_ALL_ORIGINS=True
-
+CORS_ORIGIN_ALLOW_ALL=True
 REST_FRAMEWORK={
     'NON_FIELD_ERRORS_KEY': 'error'
 }
