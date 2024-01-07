@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.urls import path,include
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
 from .views import ListOfUsersView,userDetail,RegisterView,VerifyEmail,LoginAPIView,ResendEmailVarification,PasswordTokenCheckAPIView,RequestPasswordResetEmail,SetNewPasswordAPIView
 urlpatterns = [
     path('all/',ListOfUsersView.as_view(),name="list_of_users"),
@@ -10,6 +12,9 @@ urlpatterns = [
     path('ResendEmail/', ResendEmailVarification.as_view(), name="ResendEmail"),
     path('password-reset/<uidb64>/<token>',PasswordTokenCheckAPIView.as_view(),name="password-reset-confirm"),
     path('request-reset-email/',RequestPasswordResetEmail.as_view(),name="request-reset-email"),
-    path('password-reset-complete',SetNewPasswordAPIView.as_view(),name="password-reset-complete")
+    path('password-reset-complete',SetNewPasswordAPIView.as_view(),name="password-reset-complete"),
+    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+
 
 ]
