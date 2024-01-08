@@ -1,0 +1,59 @@
+.SignupForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.Input-signup {
+  display: flex;
+  width: 576px;
+  padding: 24px 0px;
+  align-items: center;
+
+}
+
+.iconcontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(80, 62, 157, 0.1);
+  border-radius: 16px;
+  height: 64px;
+  width: 64px;
+  position: relative;
+}
+
+fieldset {
+  border: none;
+  padding: 12px;
+}
+
+
+
+.iconSign {
+  color: var(--colorsprimary-50-3e-9d-100);
+}
+
+.forminp {
+  border: none;
+  width: 100%;
+  padding: 16px;
+  border-bottom: 1px solid var(--colorsprimary-50-3e-9d-10);
+}
+
+
+
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin: 12px;
+}
+
+
+.Boxofinputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

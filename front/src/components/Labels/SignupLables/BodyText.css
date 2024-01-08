@@ -1,0 +1,17 @@
+.labelBody {
+  /* height: 32px;
+  width: 576px; */
+}
+
+.labelBody .body-text {
+  color: var(--colorstextdark-626264100);
+  font-family: var(--text-body-large-regular-font-family);
+  font-size: var(--text-body-large-regular-font-size);
+  font-style: var(--text-body-large-regular-font-style);
+  font-weight: var(--text-body-large-regular-font-weight);
+  left: 0;
+  letter-spacing: var(--text-body-large-regular-letter-spacing);
+  line-height: var(--text-body-large-regular-line-height);
+  top: 0;
+  /* width: 576px; */
+}

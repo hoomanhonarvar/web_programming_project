@@ -1,0 +1,9 @@
+.signupimg {
+  background: url(../../Pics/Image.png) no-repeat;
+  background-size: contain;
+  display: flex;
+  width: 501px;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}

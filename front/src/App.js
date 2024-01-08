@@ -1,25 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import  SignUpDesktop from "./Pages/SignUpDesktop/SignUpDesktop";
+import SignInDesktop from "./Pages/SignInDesktop/SignInDesktop";
+import './App.css'
+import ForgetPass from "./Pages/ForgetPassword/ForgetPass"
+import HomePage from "./Pages/HomePage/HomePage";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return (<div className="Main" >
+    <SignUpDesktop/>
+  </div>);
 }
 
 export default App;

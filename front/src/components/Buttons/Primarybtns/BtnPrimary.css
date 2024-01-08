@@ -1,0 +1,18 @@
+.buttons-primary {
+  background-color: var(--colorsprimary-50-3e-9d-100);
+  border-radius: 12px;
+  height: 64px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.buttons-primary .text {
+  color: var(--colorstextlightf-7fafc-100);
+  font-family: var(--text-h3-bold-font-family);
+  font-size: var(--text-h3-bold-font-size);
+  font-style: var(--text-h3-bold-font-style);
+  font-weight: var(--text-h3-bold-font-weight);
+  text-align: center;
+  width: 100%;
+}

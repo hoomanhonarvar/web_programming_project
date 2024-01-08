@@ -1,0 +1,15 @@
+/* .label {
+  height: 24px;
+  width: 456px;
+} */
+
+.labelForm .titleForm {
+  color: var(--colorstextdark-182135100);
+  font-family: var(--text-h6-bold-all-caps-font-family);
+  font-size: var(--text-h6-bold-all-caps-font-size);
+  font-style: var(--text-h6-bold-all-caps-font-style);
+  font-weight: var(--text-h6-bold-all-caps-font-weight);
+  letter-spacing: var(--text-h6-bold-all-caps-letter-spacing);
+  line-height: var(--text-h6-bold-all-caps-line-height);
+  width: 456px;
+}

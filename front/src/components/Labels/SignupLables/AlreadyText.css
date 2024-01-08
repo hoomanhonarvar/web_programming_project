@@ -1,0 +1,34 @@
+
+
+.Alreadylabel .sign-in-button {
+  color: transparent;
+  font-family: "Open Sans-Regular", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+
+  /* width: 576px; */
+}
+
+.Alreadylabel .text-wrapper {
+  color: #626264;
+  font-family: var(--text-body-normal-regular-font-family);
+  font-size: var(--text-body-normal-regular-font-size);
+  font-style: var(--text-body-normal-regular-font-style);
+  font-weight: var(--text-body-normal-regular-font-weight);
+}
+
+.Alreadylabel .span {
+  color: #a3a3a4;
+}
+
+.Alreadylabel .text-wrapper-2 {
+  color: #fb6d3a;
+  font-family: var(--text-h4-bold-font-family);
+  font-size: var(--text-h4-bold-font-size);
+  font-style: var(--text-h4-bold-font-style);
+  font-weight: var(--text-h4-bold-font-weight);
+  letter-spacing: var(--text-h4-bold-letter-spacing);
+  line-height: var(--text-h4-bold-line-height);
+}
