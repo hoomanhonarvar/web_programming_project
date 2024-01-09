@@ -33,7 +33,7 @@ schema_view = get_schema_view(
       license=openapi.License(name="BSD License"),
    ),
    public=True,
-   permission_classes=(permissions.AllowAny,),
+   permission_classes=(permissions.AllowAny,permissions.IsAuthenticatedOrReadOnly),
 )
 
 urlpatterns = [
@@ -46,5 +46,7 @@ urlpatterns = [
 
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path('address/', include('address.urls')),
+
+    path('restaurant/',include('restaurant.urls')),
 
 ]

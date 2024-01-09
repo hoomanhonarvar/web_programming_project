@@ -148,7 +148,6 @@ STATIC_URL = 'static/'
 REST_FRAMEWORK={
     'DEFAULT_PERMISSION_CLASSES': [
         # 'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-        # 'user.permissions.kirKhar',
     ]
     ,
     'DEFAULT_AUTHENTICATION_CLASSES': [
