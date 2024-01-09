@@ -4,7 +4,6 @@ from django.contrib.auth.models import (
 AbstractBaseUser,BaseUserManager,PermissionsMixin
 )
 from rest_framework_simplejwt.tokens import RefreshToken
-
 # Create your models here.
 class user_custom(models.Model):
     full_name=models.CharField(max_length=40)
@@ -55,7 +54,6 @@ class User(AbstractBaseUser,PermissionsMixin):
     update_at=models.DateTimeField(auto_now=True)
     phone_number = PhoneNumberField(max_length=12)
     image = models.ImageField(upload_to='images/users/')
-
     USERNAME_FIELD='email'
     REQUIRED_FIELDS = ['username']
     object = UserManager()
