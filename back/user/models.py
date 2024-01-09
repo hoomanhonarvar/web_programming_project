@@ -1,7 +1,5 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
-from restaurant.models import restaurant
-from dish.models import dish
 from django.contrib.auth.models import (
 AbstractBaseUser,BaseUserManager,PermissionsMixin
 )
@@ -19,13 +17,13 @@ class user_custom(models.Model):
     def __str__(self):
         return self.full_name
 
-class like_rest(models.Model):
-    rest_id=models.ForeignKey(restaurant,null=False,on_delete=models.CASCADE)
-    user_id=models.ForeignKey(user_custom,null=False,on_delete=models.CASCADE)
+# class like_rest(models.Model):
+#     rest_id=models.ForeignKey(restaurant,null=False,on_delete=models.CASCADE)
+#     user_id=models.ForeignKey(user_custom,null=False,on_delete=models.CASCADE)
 
-class like_dish(models.Model):
-    rest_id=models.ForeignKey(dish,null=False,on_delete=models.CASCADE)
-    user_id=models.ForeignKey(user_custom,null=False,on_delete=models.CASCADE)
+# class like_dish(models.Model):
+#     rest_id=models.ForeignKey(dish,null=False,on_delete=models.CASCADE)
+#     user_id=models.ForeignKey(user_custom,null=False,on_delete=models.CASCADE)
 
 
 class UserManager(BaseUserManager):
