@@ -23,8 +23,12 @@ class cart (models.Model):
     distance=models.FloatField()
     Estimated_arrival=models.IntegerField(validators=[MinValueValidator(0),MaxValueValidator(60)])
     promo_code=models.CharField(max_length=30)
-    dishes=models.ManyToManyField(dish,related_name="list_of_cart_dish",blank=False)
+    dishes=models.ManyToManyField(dish,related_name="list_of_cart_dish",blank=False,through='cart_dish_table')
     On_the_way=models.BooleanField(default=False)
     Food_is_ready=models.BooleanField(default=False)
 
 
+class cart_dish_table(models.Model):
+    cart=models.ForeignKey(cart,on_delete=models.CASCADE)
+    dish=models.ForeignKey(dish,on_delete=models.CASCADE)
+    number=models.IntegerField(default=0)

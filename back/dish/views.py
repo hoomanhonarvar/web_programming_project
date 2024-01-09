@@ -1,7 +1,9 @@
+from django.db.models import Q
 from django.shortcuts import render
 from rest_framework import status
 from rest_framework.generics import RetrieveUpdateDestroyAPIView,CreateAPIView,ListAPIView,GenericAPIView
 from .models import dish
+from cart.models import cart,cart_dish_table
 from .serializers import list_of_dishes_Serializer
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
@@ -10,7 +12,7 @@ from rest_framework.permissions import IsAuthenticated
 class dishCreateAPIView(CreateAPIView):
     serializer_class = list_of_dishes_Serializer
     queryset = dish.objects.all()
-    permission_classes = (IsAdminUser)
+    permission_classes = (IsAdminUser,)
     def perform_create(self, serializer):
         return serializer.save()
 
@@ -26,8 +28,8 @@ class like_dishAPIView(GenericAPIView):
     permission_classes = (IsAuthenticated,)
     def get(self, request, pk):
         dish_id = pk
-        if not dish.objects.filter(id=dish).exists():
-            return Response({'error': 'this id is not exists'}, status=status.HTTP_404_NOT_FOUND)
+        if not dish.objects.filter(id=dish_id).exists():
+            return Response({'error': 'this id dish not exists'}, status=status.HTTP_404_NOT_FOUND)
         else:
             dish_item = dish.objects.get(id=dish_id)
             if dish_item.fav.filter(id=request.user.id).exists():
@@ -41,3 +43,69 @@ class favourite_dishAPIView(ListAPIView):
     def get_queryset(self):
         user = self.request.user
         return dish.objects.filter(fav__username__in=[user.username])
+
+
+class add_dish_to_cart_APIView(GenericAPIView):
+    permission_classes = (IsAuthenticated,)
+    def get(self, request,pk):
+        dish_id = pk
+
+        if not dish.objects.filter(id=dish).exists():
+            return Response({'error': 'this dish is not exists'}, status=status.HTTP_404_NOT_FOUND)
+        else:
+            user_carts=cart.objects.filter(owner=request.user)
+            if user_carts.filter(finish_cancel='N').exists():
+                not_started_cart=user_carts.get(finish_cancel='N')
+
+                if cart_dish_table.objects.filter(Q(dish=dish_id) and Q( cart=not_started_cart.id)):
+
+                    goal_cart=cart_dish_table.objects.get(Q(dish=dish_id) and Q( cart=not_started_cart.id))
+                    goal_cart.number+=1
+
+                else:
+                     new_dish=cart_dish_table(cart=not_started_cart,dish=dish_id,number=1)
+                     new_dish.save()
+
+            else:
+                ##adding a cart
+                pass
+            return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+
+class del_dish_from_cart_APIView(GenericAPIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, pk):
+        dish_id = pk
+
+        if not dish.objects.filter(id=dish).exists():
+            return Response({'error': 'this dish is not exists'}, status=status.HTTP_404_NOT_FOUND)
+        else:
+            user_carts = cart.objects.filter(owner=request.user)
+            if user_carts.filter(finish_cancel='N').exists():
+                not_started_cart = user_carts.get(finish_cancel='N')
+
+                if cart_dish_table.objects.filter(Q(dish=dish_id) and Q(cart=not_started_cart.id)):
+
+                    goal_cart = cart_dish_table.objects.get(Q(dish=dish_id) and Q(cart=not_started_cart.id))
+                    if(goal_cart.number==1):
+                         cart_dish_table.delete(goal_cart)
+                    else:
+                        goal_cart.number-=1
+
+                else:
+                    return Response(status=status.HTTP_406_NOT_ACCEPTABLE)
+
+            else:
+                return Response(status=status.HTTP_406_NOT_ACCEPTABLE)
+            return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+
+
+
+
+
