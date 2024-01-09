@@ -48,5 +48,6 @@ urlpatterns = [
     path('address/', include('address.urls')),
 
     path('restaurant/',include('restaurant.urls')),
+    path('dish/', include('dish.urls')),
 
 ]
