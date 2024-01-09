@@ -50,7 +50,7 @@ class add_dish_to_cart_APIView(GenericAPIView):
     def get(self, request,pk):
         dish_id = pk
 
-        if not dish.objects.filter(id=dish).exists():
+        if not dish.objects.filter(id=dish_id).exists():
             return Response({'error': 'this dish is not exists'}, status=status.HTTP_404_NOT_FOUND)
         else:
             user_carts=cart.objects.filter(owner=request.user)
