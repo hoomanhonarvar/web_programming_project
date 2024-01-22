@@ -4,4 +4,3 @@ from .models import user_add
 
 
 admin.site.register(user_add)
-

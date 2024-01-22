@@ -13,9 +13,9 @@ OPTION=(
 )
 class cart (models.Model):
     owner=models.ForeignKey(to=User,null=False,on_delete=models.CASCADE,default="")
-    rest_id=models.ForeignKey(to=restaurant,null=False,on_delete=models.CASCADE)
+    rest_id=models.ForeignKey(to=restaurant,related_name='restaurant_cart',null=False,on_delete=models.CASCADE)
     rest_name=models.CharField(max_length=68,default="")
-    add_id=models.ForeignKey(to=user_add,null=False,on_delete=models.CASCADE)
+    add_id=models.ForeignKey(to=user_add,related_name='address_cart',null=False,on_delete=models.CASCADE)
     total=models.FloatField()
     finish_cancel=models.CharField(choices=OPTION,max_length=1,default='N')
     time=models.DateTimeField(auto_now_add=True)
@@ -23,12 +23,14 @@ class cart (models.Model):
     distance=models.FloatField()
     Estimated_arrival=models.IntegerField(validators=[MinValueValidator(0),MaxValueValidator(60)])
     promo_code=models.CharField(max_length=30)
-    dishes=models.ManyToManyField(dish,related_name="list_of_cart_dish",blank=False,through='cart_dish_table')
     On_the_way=models.BooleanField(default=False)
     Food_is_ready=models.BooleanField(default=False)
 
 
+
 class cart_dish_table(models.Model):
-    cart=models.ForeignKey(cart,on_delete=models.CASCADE)
-    dish=models.ForeignKey(dish,on_delete=models.CASCADE)
+    cart_id=models.ForeignKey(cart,related_name="dish_cart",on_delete=models.RESTRICT,null=False,default=0)
+    dish_id=models.ForeignKey(dish,on_delete=models.RESTRICT,null=False,default=0)
     number=models.IntegerField(default=0)
+    def __str__(self):
+        return '%d: %s' % (self.number, self.dish_id.title)

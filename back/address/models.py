@@ -15,6 +15,7 @@ class user_add(models.Model):
     is_work=models.BooleanField()
 
 
+
     def __str__(self):
         if self.is_work:
             return "home :"+self.city+self.state+self.street_name
