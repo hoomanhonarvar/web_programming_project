@@ -77,18 +77,21 @@ class add_dish_to_cart_APIView(GenericAPIView):
             else:
                 ##adding a cart
                 if user_add.objects.filter(id=request.user.id).exists():
-                    print(restaurant.objects.get(name=dish.objects.get(id=dish_id).rest_id).id)
-                    # print(restaurant.objects.get(id=dish.objects.get(id=dish_id).rest_id).name)
-                    print(user_add.objects.filter(id=request.user.id).first().id)
-                    new_cart=cart(owner=request.user,rest_id=restaurant.objects.get(id=restaurant.objects.get(name=dish.objects.get(id=dish_id).rest_id).id),rest_name=restaurant.objects.get(name=dish.objects.get(id=dish_id).rest_id),
-                                  add_id=user_add.objects.get(id=user_add.objects.filter(id=request.user.id).first().id))
-                    new_cart.save()
-                    not_started_cart = user_carts.get(finish_cancel='N')
-                    new_dish = cart_dish_table(cart_id=not_started_cart, dish_id=dish.objects.get(id=dish_id), number=1)
-                    new_dish.save()
-                    not_started_cart.total += dish.objects.get(id=dish_id).fee
-                    not_started_cart.save()
-                    return Response(new_cart,status=status.HTTP_201_CREATED)
+                    try:
+                        new_cart=cart(owner=request.user,rest_id=restaurant.objects.get(id=restaurant.objects.get(name=dish.objects.get(id=dish_id).rest_id).id),rest_name=restaurant.objects.get(name=dish.objects.get(id=dish_id).rest_id.name),
+                                      add_id=user_add.objects.get(id=user_add.objects.filter(id=request.user.id).first().id))
+                        new_cart.total=dish.objects.get(id=dish_id).fee + restaurant.objects.get(id=new_cart.rest_id.id).delivery
+                        new_cart.save()
+                        not_started_cart = user_carts.get(finish_cancel='N')
+                        new_dish = cart_dish_table(cart_id=not_started_cart, dish_id=dish.objects.get(id=dish_id), number=1)
+                        new_dish.save()
+                        # print(fee+dish.objects.get(id=dish_id).fee)
+                        # not_started_cart.total += dish.objects.get(id=dish_id).fee+restaurant.objects.get(id=new_cart.rest_id.id).delivery
+                        # not_started_cart.save()
+                    except:
+                        return Response({'error': "error"},
+                                        status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
                 else:
                     return Response({'error':"you don't have any address please enter an address"},status=status.HTTP_400_BAD_REQUEST)
             return Response(status=status.HTTP_204_NO_CONTENT)

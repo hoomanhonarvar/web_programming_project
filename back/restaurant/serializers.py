@@ -3,5 +3,5 @@ from .models import restaurant
 class restauranListSerializer(serializers.ModelSerializer):
     class Meta:
         model=restaurant
-        exclude =('fav','id',)
+        exclude =('fav',)
 

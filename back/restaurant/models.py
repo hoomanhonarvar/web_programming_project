@@ -16,7 +16,7 @@ class restaurant (models.Model):
     range_dist=models.IntegerField()
     offer=models.CharField(max_length=25)
     opening_time=models.IntegerField()
-    delivery=models.CharField(default='free',max_length=25)
+    delivery=models.FloatField(default=0)
     name=models.CharField(max_length=20)
     image=models.ImageField(upload_to='images/restaurant/')
     fav=models.ManyToManyField(User,related_name='favourite_restaurant',blank=True)

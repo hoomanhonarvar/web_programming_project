@@ -26,7 +26,10 @@ class createNewCartAPIView(GenericAPIView):
 
             data=request.data
             data['owner']=request.user.id
-            data['rest_name']=restaurant.objects.get(id=data['rest_id']).name
+            if restaurant.objects.filter(id=data['rest_id']).exists():
+                data['rest_name']=restaurant.objects.get(id=data['rest_id']).name
+            else:
+                return Response({'error  ':'this restaurant id does not exist'},status=status.HTTP_404_NOT_FOUND)
             serializer=self.serializer_class(data=data)
             serializer.is_valid(raise_exception=True)
             serializer.save()

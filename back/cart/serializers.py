@@ -18,7 +18,7 @@ class createNewCartSerializer(serializers.ModelSerializer):
 class createNewCartInputSerializer(serializers.ModelSerializer):
     class Meta:
         model=cart
-        fields=['owner','rest_id','rest_name','add_id',]
+        fields=['owner','rest_id','rest_name','add_id']
 class Upcoming_orders_list_Serializer(serializers.ModelSerializer):
 
     class Meta:
