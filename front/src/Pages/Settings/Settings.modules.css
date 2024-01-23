@@ -1,0 +1,17 @@
+
+.SettingsPage{
+  display: block;
+  
+}
+
+.TitleBoxSetting{
+  margin: 48px 0px 32px 0px;
+}
+
+.MainSettingsScreen{
+  display: flex;
+flex-direction: column;
+justify-content: start;
+
+margin: 12px 32px;
+}

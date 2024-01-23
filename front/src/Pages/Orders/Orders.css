@@ -1,0 +1,13 @@
+.OrdersPage{
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.MainOrderScreen{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: 100%;
+  margin: 12px 32px;
+}

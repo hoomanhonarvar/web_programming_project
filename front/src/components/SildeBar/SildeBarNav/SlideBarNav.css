@@ -1,0 +1,23 @@
+.NavbarList {
+  list-style: none;
+  width: auto;
+}
+
+.PageNameContainer a {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  padding: 16px;
+  width: 240px;
+  text-decoration: none;
+}
+
+.Title {
+  color: var(--colorstextdark-626264100);
+  font-family: "Open Sans-Regular", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  padding-left: 24px;
+}
+

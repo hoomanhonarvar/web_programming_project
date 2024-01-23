@@ -1,0 +1,28 @@
+.ProfileContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ProfileDets{
+  display: flex;
+  flex-direction: column;
+  padding: 0px 16px 0px 20px;
+}
+
+
+.ProfileName {
+  color: var(--colorstextdark-182135100);
+  font-family: "Open Sans-Bold", Helvetica;
+  font-size: 14px;
+  font-weight: 700;
+  
+}
+
+
+.ProfileEmail{
+  color: var(--colorstextdark-626264100);
+font-family: "Open Sans-Regular", Helvetica;
+font-size: 11px;
+font-weight: 400;
+}

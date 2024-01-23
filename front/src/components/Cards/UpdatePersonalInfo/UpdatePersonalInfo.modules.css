@@ -1,0 +1,38 @@
+.PInfoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--colorslightffffff-100);
+  border-radius: 16px;
+  height: 685px;
+  border: 1px solid #bbb;
+  width: 400px;
+  padding: 32px;
+
+}
+
+.PersonalInfoTitle{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+
+
+.field{
+  width: 268px;
+}
+
+
+.bgIcon{
+  width: 48px;
+  height: 48px;
+}
+
+
+.updateInfo{
+  padding: 16px 0px;
+  display: flex;
+  align-items: center;
+}

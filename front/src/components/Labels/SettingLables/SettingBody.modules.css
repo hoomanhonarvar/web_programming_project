@@ -1,0 +1,11 @@
+.labelBody .Setting-body-text {
+  color: var(--colorstextdark-626264100);
+  font-family: var(--text-body-normal-regular-font-family);
+  font-size: var(--text-body-normal-regular-font-size);
+  font-style: var(--text-body-normal-regular-font-style);
+  font-weight: var(--text-body-normal-regular-font-weight);
+  letter-spacing: var(--text-body-normal-regular-letter-spacing);
+  line-height: var(--text-body-normal-regular-line-height);
+  width: 336px;
+
+}

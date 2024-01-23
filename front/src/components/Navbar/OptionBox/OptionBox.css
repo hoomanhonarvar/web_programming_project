@@ -1,0 +1,17 @@
+.Container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.TextOption .InerBoxText {
+  color: var(--colorstextdark-182135100);
+  font-family: var(--text-h5-semi-bold-font-family);
+  font-size: var(--text-h5-semi-bold-font-size);
+  font-style: var(--text-h5-semi-bold-font-style);
+  font-weight: var(--text-h5-semi-bold-font-weight);
+  padding: 0px 8px 0px 12px;
+
+}

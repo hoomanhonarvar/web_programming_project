@@ -1,0 +1,26 @@
+.SerchBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  background-color: var(--colorsgrayf-7f-7f-7100);
+  border-radius: 10px;
+  height: 48px;
+  width: 402px;
+  padding: 0px 16px;
+}
+
+.SearchIcon{
+  padding-right: 12px;
+}
+
+.Sinp{
+  border: none;
+  background-color: var(--colorsgrayf-7f-7f-7100);
+  
+}
+
+.Sinp:active, .Sinp:focus{
+  border-color: transparent;
+
+}
