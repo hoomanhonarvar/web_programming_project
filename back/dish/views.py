@@ -8,6 +8,8 @@ from .serializers import list_of_dishes_Serializer
 from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from restaurant.models import restaurant
+from address.models import user_add
 # Create your views here.
 class dishCreateAPIView(CreateAPIView):
     serializer_class = list_of_dishes_Serializer
@@ -57,18 +59,31 @@ class add_dish_to_cart_APIView(GenericAPIView):
             if user_carts.filter(finish_cancel='N').exists():
                 not_started_cart=user_carts.get(finish_cancel='N')
 
-                if cart_dish_table.objects.filter(Q(dish=dish_id) and Q( cart=not_started_cart.id)):
+                if cart_dish_table.objects.filter(Q(dish_id=dish.objects.get(id=dish_id)) and Q( cart_id=not_started_cart)).exists():
 
-                    goal_cart=cart_dish_table.objects.get(Q(dish=dish_id) and Q( cart=not_started_cart.id))
+                    goal_cart=cart_dish_table.objects.get(Q(dish_id=dish.objects.get(id=dish_id)) and Q( cart_id=not_started_cart))
                     goal_cart.number+=1
+                    goal_cart.save()
 
                 else:
-                     new_dish=cart_dish_table(cart=not_started_cart,dish=dish_id,number=1)
+                     new_dish=cart_dish_table(cart_id=not_started_cart,dish_id=dish.objects.get(id=dish_id),number=1)
                      new_dish.save()
 
             else:
                 ##adding a cart
-                pass
+                if user_add.objects.filter(id=request.user.id).exists():
+                    print(restaurant.objects.get(name=dish.objects.get(id=dish_id).rest_id).id)
+                    # print(restaurant.objects.get(id=dish.objects.get(id=dish_id).rest_id).name)
+                    print(user_add.objects.filter(id=request.user.id).first().id)
+                    new_cart=cart(owner=request.user,rest_id=restaurant.objects.get(id=restaurant.objects.get(name=dish.objects.get(id=dish_id).rest_id).id),rest_name=restaurant.objects.get(name=dish.objects.get(id=dish_id).rest_id),
+                                  add_id=user_add.objects.get(id=user_add.objects.filter(id=request.user.id).first().id))
+                    new_cart.save()
+                    not_started_cart = user_carts.get(finish_cancel='N')
+                    new_dish = cart_dish_table(cart_id=not_started_cart, dish_id=dish.objects.get(id=dish_id), number=1)
+                    new_dish.save()
+                    return Response(new_cart,status=status.HTTP_201_CREATED)
+                else:
+                    return Response({'error':"you don't have any address please enter an address"},status=status.HTTP_400_BAD_REQUEST)
             return Response(status=status.HTTP_204_NO_CONTENT)
 
 

@@ -59,10 +59,13 @@ SWAGGER_SETTINGS={
             'type':'apiKey',
             'name':'Authorization',
             'in':'header'
+        },
+    'basic': {
+            'type': 'basic'
         }
-        ,
-    'LOGIN_URL': 'rest_framework:login',
-    'LOGOUT_URL': 'rest_framework:logout'
+
+    # 'LOGIN_URL': 'rest_framework:login',
+    # 'LOGOUT_URL': 'rest_framework:logout'
     }
 }
 MIDDLEWARE = [
