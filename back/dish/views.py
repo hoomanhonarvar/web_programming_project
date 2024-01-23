@@ -62,11 +62,16 @@ class add_dish_to_cart_APIView(GenericAPIView):
                 if cart_dish_table.objects.filter(Q(dish_id=dish.objects.get(id=dish_id)) and Q( cart_id=not_started_cart)).exists():
 
                     goal_cart=cart_dish_table.objects.get(Q(dish_id=dish.objects.get(id=dish_id)) and Q( cart_id=not_started_cart))
+
                     goal_cart.number+=1
                     goal_cart.save()
+                    not_started_cart.total+=dish.objects.get(id=dish_id).fee
+                    not_started_cart.save()
 
                 else:
                      new_dish=cart_dish_table(cart_id=not_started_cart,dish_id=dish.objects.get(id=dish_id),number=1)
+                     not_started_cart.total += dish.objects.get(id=dish_id).fee
+                     not_started_cart.save()
                      new_dish.save()
 
             else:
@@ -81,6 +86,8 @@ class add_dish_to_cart_APIView(GenericAPIView):
                     not_started_cart = user_carts.get(finish_cancel='N')
                     new_dish = cart_dish_table(cart_id=not_started_cart, dish_id=dish.objects.get(id=dish_id), number=1)
                     new_dish.save()
+                    not_started_cart.total += dish.objects.get(id=dish_id).fee
+                    not_started_cart.save()
                     return Response(new_cart,status=status.HTTP_201_CREATED)
                 else:
                     return Response({'error':"you don't have any address please enter an address"},status=status.HTTP_400_BAD_REQUEST)
@@ -95,21 +102,23 @@ class del_dish_from_cart_APIView(GenericAPIView):
     def get(self, request, pk):
         dish_id = pk
 
-        if not dish.objects.filter(id=dish).exists():
+        if not dish.objects.filter(id=dish_id).exists():
             return Response({'error': 'this dish is not exists'}, status=status.HTTP_404_NOT_FOUND)
         else:
             user_carts = cart.objects.filter(owner=request.user)
             if user_carts.filter(finish_cancel='N').exists():
                 not_started_cart = user_carts.get(finish_cancel='N')
 
-                if cart_dish_table.objects.filter(Q(dish=dish_id) and Q(cart=not_started_cart.id)):
+                if cart_dish_table.objects.filter(Q(dish_id=dish_id) and Q(cart_id=not_started_cart.id)):
 
-                    goal_cart = cart_dish_table.objects.get(Q(dish=dish_id) and Q(cart=not_started_cart.id))
+                    goal_cart = cart_dish_table.objects.get(Q(dish_id=dish_id) and Q(cart_id=not_started_cart.id))
                     if(goal_cart.number==1):
                          cart_dish_table.delete(goal_cart)
+
                     else:
                         goal_cart.number-=1
-
+                    not_started_cart.total -= dish.objects.get(id=dish_id).fee
+                    not_started_cart.save()
                 else:
                     return Response(status=status.HTTP_406_NOT_ACCEPTABLE)
 

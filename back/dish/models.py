@@ -7,7 +7,7 @@ class dish(models.Model):
     image=models.ImageField(upload_to='images/dish/')
     title=models.CharField(max_length=20)
     description=models.CharField(max_length=300,null=True)
-    fee=models.CharField(default='free',max_length=20)
+    fee=models.FloatField(default='free',max_length=20)
     rate=models.IntegerField(default=5,validators=[MinValueValidator(0),
     MaxValueValidator(5)])
     rest_id=models.ForeignKey(to=restaurant,null=True,on_delete=models.CASCADE)
