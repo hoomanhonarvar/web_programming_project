@@ -10,6 +10,8 @@ import BtnPrimary from '../Buttons/Primarybtns/BtnPrimary'
 import FormLable from '../Labels/SignupLables/FormLable'
 import AlreadyText from '../Labels/SignupLables/AlreadyText'
 import axios from '../../api/axios'
+import {Link} from 'react-router-dom'
+
 const REGISTER_URL="/user/register/";
 const SignupDets = () => {
   const emailRef=useRef();
@@ -126,7 +128,8 @@ const SignupDets = () => {
           </div>
           
           <BtnPrimary title="Sign Up"/>
-          <AlreadyText title="Already have an account?" id="Sing in" />
+          
+          <AlreadyText title="Already have an account?" id="Sing in" Link="/sign-in"/>
 
         </fieldset>
 

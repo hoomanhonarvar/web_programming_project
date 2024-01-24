@@ -161,3 +161,8 @@ html, body, .root ,#app, #app>div {
 
   margin: 0!important;
 }
+
+
+*{
+  text-decoration: none;
+}

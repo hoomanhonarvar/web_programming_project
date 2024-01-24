@@ -8,6 +8,7 @@
 }
 
 .btnS {
+  cursor: pointer;
   background-color: transparent;
   border: none;
   color: var(--colorsprimary-50-3e-9d-100);

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
 import './AlreadyText.css'
 
 export class AlreadyText extends Component {
@@ -7,11 +8,18 @@ export class AlreadyText extends Component {
     
     return (
       <div className="Alreadylabel">
-        <p className="sign-in-button">
+        <div className="sign-in-button">
+          <Link to={this.props.Link}>
           <span className="text-wrapper">{this.props.title}</span>
+        </Link>
           <span className="span">&nbsp;</span>
-          <span className="text-wrapper-2">{this.props.id}</span>
-        </p>
+<Link to={this.props.Link}>
+          <span  className="text-wrapper-2">{this.props.id}</span> 
+
+</Link>
+
+
+        </div>
       </div>
 
     )

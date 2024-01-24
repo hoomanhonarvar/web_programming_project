@@ -8,6 +8,7 @@ import BtnPrimary from '../Buttons/Primarybtns/BtnPrimary'
 import FormLable from '../Labels/SignupLables/FormLable'
 import BtnSecondary from '../Buttons/Secondarybtns/BtnSecondary'
 import AlreadyText from '../Labels/SignupLables/AlreadyText'
+import {Link} from 'react-router-dom'
 
 const SignupDets = () => {
   return (
@@ -41,9 +42,9 @@ const SignupDets = () => {
           </div>
 
           <BtnSecondary title="Sign in" />
-          <AlreadyText title="Forgot password?"/>
-
-          <BtnPrimary title="Create an account" />
+          <AlreadyText title="Forgot password?"  Link="/forgetpass"/>
+          <Link to="/sign-up">
+          <BtnPrimary title="Create an account" /></Link>
      
 
          

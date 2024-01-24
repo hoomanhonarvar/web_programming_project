@@ -1,12 +1,15 @@
 
 
-.Alreadylabel .sign-in-button {
+.Alreadylabel .sign-in-button a{
+  display: inline-block;
   color: transparent;
   font-family: "Open Sans-Regular", Helvetica;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
   text-align: center;
+  text-decoration: none;
+ 
 
   /* width: 576px; */
 }
@@ -31,4 +34,5 @@
   font-weight: var(--text-h4-bold-font-weight);
   letter-spacing: var(--text-h4-bold-letter-spacing);
   line-height: var(--text-h4-bold-line-height);
+  text-decoration: none;
 }
