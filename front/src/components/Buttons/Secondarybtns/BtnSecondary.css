@@ -7,7 +7,9 @@
   align-items: center;
 }
 
-.buttons-secondary .text {
+.btnS {
+  background-color: transparent;
+  border: none;
   color: var(--colorsprimary-50-3e-9d-100);
   font-family: var(--text-h3-bold-font-family);
   font-size: var(--text-h3-bold-font-size);

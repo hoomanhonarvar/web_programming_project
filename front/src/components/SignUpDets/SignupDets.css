@@ -57,3 +57,11 @@ fieldset {
   flex-direction: column;
   justify-content: space-between;
 }
+
+.Msg{
+  text-align: center;
+  border-radius: 16px;
+  font-family: var(--text-body-normal-regular-font-family);
+  min-height: 50px;
+
+}

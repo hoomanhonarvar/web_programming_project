@@ -5,10 +5,13 @@ export class BtnPrimary extends Component {
   render() {
     return (
       <div className="buttons-primary">
-      <div className="text">{this.props.title}</div>
+        <button type="submit"className='btnP' >
+          {this.props.title}
+        </button>
       </div>
     )
   }
 }
+
 
 export default BtnPrimary

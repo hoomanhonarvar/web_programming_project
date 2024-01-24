@@ -5,7 +5,9 @@ export class BtnSecondary extends Component {
   render() {
     return (
       <div className="buttons-secondary">
-      <div className="text">{this.props.title}</div>
+        <button className='btnS'>
+        {this.props.title}
+        </button>
       </div>
     )
   }

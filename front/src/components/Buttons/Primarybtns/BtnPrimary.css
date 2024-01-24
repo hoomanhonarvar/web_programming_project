@@ -7,7 +7,10 @@
   align-items: center;
 }
 
-.buttons-primary .text {
+.btnP {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
   color: var(--colorstextlightf-7fafc-100);
   font-family: var(--text-h3-bold-font-family);
   font-size: var(--text-h3-bold-font-size);
