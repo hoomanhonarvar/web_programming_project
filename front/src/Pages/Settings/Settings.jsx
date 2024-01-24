@@ -14,9 +14,38 @@ import Card from '../../Pics/Icons/Icons/Card.svg'
 import Support from '../../Pics/Icons/Icons/Support.svg'
 import newProfile from '../../Pics/Icons/Icons/Split-order.svg'
 import Money from '../../Pics/Icons/Icons/Money.svg'
-
+import {useState,useEffect}from 'react';
+import useAxiosPrivate from '../../hooks/useAxiosPrivate'
+import { useNavigate,useLocation } from 'react-router-dom'
 function Settings() {
+  // const axiosPrivate=useAxiosPrivate();
+  // const navigate=useNavigate();
+  // const Location=useLocation();
+  // useEffect(()=>{
+  //   let isMounted=true;
+  //   const controller=new AbortController();
+    
+  //   const getUser=async()=>{
+  //     try{
+  //       const response=await useAxiosPrivate.get('/address',{
+  //         signal: controller.signal
+  //       });
+  //       console.log(response.data);
+  //     }catch(error){
+  //       console.error(error);
+  //       navigate('/sign-in',{state:{from:Location},replace:true});
+  //     }
+  //   }
+  //   return ()=>{
+  //     isMounted=false;
+  //     controller.abort();
+      
+  //   }
+  // },[])
   return (
+
+    
+
     <div className='SettingsPage'>
 
       {/*SlideBar */}

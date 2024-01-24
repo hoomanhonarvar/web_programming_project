@@ -1,6 +1,7 @@
 import React from "react";
 import {
   BrowserRouter,
+  Link,
   Route,
   Routes,
 } from 'react-router-dom';
@@ -13,33 +14,45 @@ import Favourite from "./Pages/Favourite/Favourite"
 import Orders from "./Pages/Orders/Orders"
 import Setting from "./Pages/Settings/Settings"
 import SildeBar from "./components/SildeBar/SildeBar";
+import RequireAuth from "./components/Auth/RequireAuth";
+import Layout from "./components/Layout/Layout";
+import PersistLogin from './components/PresistLogin/PersistLogin';
+import LinkPage from "./Pages/Tmp/LinkPage";
+import Unauthorized from "./components/UnAuthorized/UnAuthorized";
+const ROLES = {
+  'User': 2001,
+  'Editor': 1984,
+  'Admin': 5150
+}
+
 function App() {
   return (
-  <div className="Main" >
-    <BrowserRouter>
-    {/* <Switch>
-      <Route exact path='/sign-in'><SignInDesktop/></Route>
-      <Route exact path='/sign-up'><SignUpDesktop/></Route>
-      <Route exact path='/forgetPass'><ForgetPass/></Route>
-      <Route exact path='/HomePage'><HomePage/></Route>
-      <Route exact path='/favourite'><Favourite/></Route>
-      <Route exact path='/order'><Orders/></Route>
-      <Route exact path='/Setting'><Setting/></Route>
-
-    </Switch> */}
     <Routes>
-        <Route path="sign-in" element={ <SignInDesktop/> } />
+
+        <Route path="/" element={<Layout />}>
+          {/* publi url */}
+        <Route path="Login" element={ <SignInDesktop/> } />
         <Route path="sign-up" element={ <SignUpDesktop/> } />
-        <Route path="order" element={ <Orders/> } />
         <Route path="forgetpass" element={ <ForgetPass/> } />
-        <Route path="/" element={ <HomePage/> } />
-        <Route path="fav" element={ <Favourite/> } />
+        <Route path="/" element={ <LinkPage/> } />
+        <Route path="unauthorized" element={<Unauthorized />} />
+
+
+        
+        {/* private url */}
+        <Route element={<RequireAuth allowedRoles={[ROLES.User,ROLES.Admin,ROLES.Editor]}/>} >
+        
         <Route path="setting" element={ <Setting/> } />
+        <Route path="fav" element={ <Favourite/> } />
+        <Route path="order" element={ <Orders/> } />
+
+        </Route>
+        </Route>
+        {/* catch all */}
+
 
       </Routes>
-      </BrowserRouter>
-
-  </div>);
+  );
 }
 
 export default App;

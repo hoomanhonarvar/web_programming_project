@@ -8,20 +8,32 @@ import BtnPrimary from '../Buttons/Primarybtns/BtnPrimary'
 import FormLable from '../Labels/SignupLables/FormLable'
 import BtnSecondary from '../Buttons/Secondarybtns/BtnSecondary'
 import AlreadyText from '../Labels/SignupLables/AlreadyText'
-import {Link} from 'react-router-dom'
+import {Link,useNavigate,useLocation} from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import axios from '../../api/axios'
-import {useRef,useState,useEffect} from "react"
+import {useState,useEffect} from "react"
+import { useRef } from 'react'
+import AuthContext from '../../context/AuthProvider'
+import useAuth from '../../hooks/useAuth'
+
 
 const LOGIN_URL="/user/Login/";
 
 const SignupDets = () => {
+  const { setAuth } = useAuth();
   const emailRef=useRef();
   const errRef=useRef();
   const[errMsg,setErrMsg]=useState('');
-  const[success,setSuccess]=useState(false);
+  const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
   const [email,setEmail]=useState('');
   const[pwd,setPwd]=useState('');
+
+  useEffect(()=>{
+    emailRef.current.focus();
+  },[])
 
   useEffect(()=>{
     setErrMsg('');
@@ -32,26 +44,42 @@ const SignupDets = () => {
   const handleSubmit=async(e)=>
   {
     e.preventDefault();
-    try{
-      const response=await axios.post(LOGIN_URL,
-        JSON.stringify({email: email,password: pwd}),
-          {
-            headers:{
-              'Content-Type':'application/json'
-            }
-          }
-          );
+    
+          try {
+            const response = await axios.post(LOGIN_URL,
+                JSON.stringify({ email, password:pwd }),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include'
+                }
+            );
+        const accessToken = response.data?.tokens.access;
+        const refreshToken=response.data?.tokens.refresh;
+        console.log( accessToken);
+        const roles=[2001,1984,5150];
+        setAuth({email,pwd,roles,accessToken,refreshToken})
+        setEmail('');
+        setPwd('');
+        console.log(from)
+        navigate(from, { replace: true })
         
+
+        // navigate("/",{replace: true})
+
         console.log(response.data);
         console.log(JSON.stringify(response));
-        setSuccess(true);
+
     }
     catch(err){
         if (!err?.response) {
           setErrMsg('No Server Response');
         }
+        else if(err.response?.status===400){
+          setErrMsg('Missing Email or password');
+        }
+
         else if(err.response?.status===401){
-          setErrMsg('wrong password');
+          setErrMsg('Unauthorized');
         }
         else{
           setErrMsg('Registeration Failed');
@@ -61,21 +89,18 @@ const SignupDets = () => {
   }
 
 
+
   return (
     <div className='SignupForm'>
-
+      
       <form onSubmit={handleSubmit}>
-      {/* <div className=''>
-      {success ? (<section className='Msg'>
-        <h1>Succuss!</h1>
-        <p>
-          <a href="#">sign in</a>
-        </p>
-      </section>):(<section className='Msg'>
+      <div className=''>
+      <section className='Msg'>
       <p ref={errRef} className={errMsg? "errmsg":"offscreen"} aria-live='assertive'>
         {errMsg}
       </p>
-      </section>)}</div> */}
+      </section>
+      </div>
         <fieldset>
           <HeadingBold title="Welcome!" />
           <BodyText title="Sign in to your account to continue" />
@@ -90,6 +115,9 @@ const SignupDets = () => {
               <input placeholder='markclarke@gmail.com' className='forminp' type="email" name="emailadress" id="" 
                onChange={(e)=>setEmail(e.target.value)}
                required
+
+               ref={emailRef}
+               value={email}
               />
             </div>
           </div>
@@ -102,8 +130,10 @@ const SignupDets = () => {
               <input placeholder='********' type="password" name="password" id="" className="forminp" 
               onChange={(e)=>setPwd(e.target.value)}
               required
+              value={pwd}
               />
             </div>
+            
           </div>
           </div>
 
