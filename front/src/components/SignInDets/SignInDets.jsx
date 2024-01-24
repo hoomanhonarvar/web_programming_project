@@ -9,13 +9,73 @@ import FormLable from '../Labels/SignupLables/FormLable'
 import BtnSecondary from '../Buttons/Secondarybtns/BtnSecondary'
 import AlreadyText from '../Labels/SignupLables/AlreadyText'
 import {Link} from 'react-router-dom'
+import axios from '../../api/axios'
+import {useRef,useState,useEffect} from "react"
+
+const LOGIN_URL="/user/Login/";
 
 const SignupDets = () => {
+  const emailRef=useRef();
+  const errRef=useRef();
+  const[errMsg,setErrMsg]=useState('');
+  const[success,setSuccess]=useState(false);
+
+  const [email,setEmail]=useState('');
+  const[pwd,setPwd]=useState('');
+
+  useEffect(()=>{
+    setErrMsg('');
+    
+  },[email,pwd])
+
+
+  const handleSubmit=async(e)=>
+  {
+    e.preventDefault();
+    try{
+      const response=await axios.post(LOGIN_URL,
+        JSON.stringify({email: email,password: pwd}),
+          {
+            headers:{
+              'Content-Type':'application/json'
+            }
+          }
+          );
+        
+        console.log(response.data);
+        console.log(JSON.stringify(response));
+        setSuccess(true);
+    }
+    catch(err){
+        if (!err?.response) {
+          setErrMsg('No Server Response');
+        }
+        else if(err.response?.status===401){
+          setErrMsg('wrong password');
+        }
+        else{
+          setErrMsg('Registeration Failed');
+        }
+        errRef.current.focus();
+    }
+  }
+
+
   return (
     <div className='SignupForm'>
 
-      <form>
-
+      <form onSubmit={handleSubmit}>
+      {/* <div className=''>
+      {success ? (<section className='Msg'>
+        <h1>Succuss!</h1>
+        <p>
+          <a href="#">sign in</a>
+        </p>
+      </section>):(<section className='Msg'>
+      <p ref={errRef} className={errMsg? "errmsg":"offscreen"} aria-live='assertive'>
+        {errMsg}
+      </p>
+      </section>)}</div> */}
         <fieldset>
           <HeadingBold title="Welcome!" />
           <BodyText title="Sign in to your account to continue" />
@@ -27,7 +87,10 @@ const SignupDets = () => {
             </div>
             <div className="field">
               <FormLable title="EMAIL ADDRESS" />
-              <input placeholder='markclarke@gmail.com' className='forminp' type="email" name="emailadress" id="" />
+              <input placeholder='markclarke@gmail.com' className='forminp' type="email" name="emailadress" id="" 
+               onChange={(e)=>setEmail(e.target.value)}
+               required
+              />
             </div>
           </div>
           <div className="Input-signup">
@@ -36,7 +99,10 @@ const SignupDets = () => {
             </div>
             <div className="field">
               <FormLable title="PASSWORD" />
-              <input placeholder='********' type="password" name="password" id="" className="forminp" />
+              <input placeholder='********' type="password" name="password" id="" className="forminp" 
+              onChange={(e)=>setPwd(e.target.value)}
+              required
+              />
             </div>
           </div>
           </div>
