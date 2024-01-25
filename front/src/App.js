@@ -19,6 +19,13 @@ import Layout from "./components/Layout/Layout";
 import LinkPage from "./Pages/Tmp/LinkPage";
 import Unauthorized from "./components/UnAuthorized/UnAuthorized";
 import PersistLogin from "./components/PresistLogin/PersistLogin";
+
+
+
+import FastDelivery from "./Pages/FastDelivery/fastDelivery";
+import Popular from "./Pages/Popular/popular";
+import Restaurant from "./Pages/Restaurant/Restaurant";
+import setNewPass from "./Pages/SetNewPass/SetNewPass";
 const ROLES = {
   'User': 2001,
   'Editor': 1984,
@@ -27,14 +34,23 @@ const ROLES = {
 
 function App() {
   return (
+    <>
+    <SildeBar/>
     <Routes>
+        <Route path="fastDelivery" element={ <FastDelivery/> } />
+        <Route path="popular" element={ <Popular/> } />
+        <Route path="restaurant" element={ <Restaurant/> } />
+        <Route path="setNewpass" element={ <setNewPass/> } />
+        <Route path="setting" element={ <Setting/> } />
+        <Route path="fav" element={ <Favourite/> } />
+        <Route path="order" element={ <Orders/> } />
 
         <Route path="/" element={<Layout />}>
           {/* publi url */}
         <Route path="Login" element={ <SignInDesktop/> } />
         <Route path="sign-up" element={ <SignUpDesktop/> } />
         <Route path="forgetpass" element={ <ForgetPass/> } />
-        <Route path="/" element={ <LinkPage/> } />
+        <Route path="/" element={ <HomePage/> } />
         <Route path="unauthorized" element={<Unauthorized />} />
 
 
@@ -44,9 +60,7 @@ function App() {
 
         <Route element={<RequireAuth allowedRoles={[ROLES.User,ROLES.Admin,ROLES.Editor]}/>} >
 
-        <Route path="setting" element={ <Setting/> } />
-        <Route path="fav" element={ <Favourite/> } />
-        <Route path="order" element={ <Orders/> } />
+        
 
         </Route>
         </Route>
@@ -55,6 +69,7 @@ function App() {
 
 
       </Routes>
+      </>
   );
 }
 
