@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './HomePage.css'
 import BtnTeritary from '../../components/Buttons/Teritarybtns/BtnTeritary'
 import HeadingBoldTwo from '../../components/Labels/SignupLables/HeadingBoldTwo'
@@ -14,8 +14,40 @@ import MapCat from '../../Pics/Icons/Icons/Category/MapCat.svg'
 import RestaurantCardMd from '../../components/Cards/RestaurantCards/RestaurantCardMd'
 import FoodCards from '../../components/Cards/FoodCards/FoodCards'
 import SildeBar from '../../components/SildeBar/SildeBar'
-
+import useAxiosPrivate from "./../../hooks/useAxiosPrivate"
+import axios from '../../api/axios'
 function HomePage() {
+
+  const [rest,Setrest]=useState();
+  const [dishes,Setdish]=useState();
+  useEffect(()=>{
+  const getRestaurants =async()=>{
+
+  try{
+  const response=await axios.get('/restaurant/all/')
+  console.log(response);
+  Setrest(response.data);
+
+}
+    catch(err){
+      console.error(err);
+    }
+}
+const getDishes=async()=>{
+  const response1=await axios.get('/dish/all/')
+  console.log(response1);
+  Setdish(response1.data);
+}
+getRestaurants();
+getDishes();
+return ()=>{
+
+}},[])
+  
+  
+
+
+
   return (
     <div className='HomePage'>
       <SildeBar/>
@@ -99,39 +131,37 @@ function HomePage() {
           </div>
 
 
-          {/* Restaurants */}
+          
+                
+            
 
-          <div className="FeaturedRst">
+            {rest?.length
+            ? <div className="FeaturedRst">
             <div className="RestaurantCols">
-              <RestaurantCardMd />
-              <RestaurantCardMd RestName='Carrows Restaurant'
-                RestType='Fish'
-                RestCost='$$$'
-                RestDist='0,3Km'
-                RestRate='4,7' />
-              <RestaurantCardMd RestName='Carrows Restaurant'
-                RestType='Fish'
-                RestCost='$$$'
-                RestDist='0,3Km'
-                RestRate='4,7'
-                RestLink='CarrowsRestaurant' />
-
+              {rest.slice(0,3).map((res,i)=>
+                  <RestaurantCardMd  key={i} RestName={res?.name}
+                  RestType={res?.type}
+                  RestCost='$$$'
+                  RestDist={res?.range_dist+"km"}
+                  RestID={String(res?.id)}
+                  RestRate={String(res?.rate)} />)}
             </div>
-            <div className="RestaurantCols">
-              <RestaurantCardMd />
-              <RestaurantCardMd RestName='Carrows Restaurant'
-                RestType='Fish'
-                RestCost='$$$'
-                RestDist='0,3Km'
-                RestRate='4,7' />
-              <RestaurantCardMd RestName='Carrows Restaurant'
-                RestType='Fish'
-                RestCost='$$$'
-                RestDist='0,3Km'
-                RestRate='4,7' />
+            <div className='RestaurantCols'>
+            {rest.slice(3,6).map((res,i)=>
+                  <RestaurantCardMd  key={i} RestName={res?.name}
+                  RestType={res?.type}
+                  RestCost='$$$'
+                  RestDist={res?.range_dist+"km"}
+                  RestID={String(res?.id)}
+                  RestRate= {String(res?.rate)} />)}
             </div>
+            </div>
+            :<p>No restaurant to display</p>
+            }
 
-          </div>
+
+            
+
 
           {/* Asian Food */}
 
@@ -142,12 +172,29 @@ function HomePage() {
             </div>
           </div>
 
-          <div className="RestaurantCols">
+          {dishes?.length
+            ? 
+            <div className="RestaurantCols">
+              {dishes.slice(0,3).map((dish,i)=>
+                  <FoodCards  key={i} 
+                  FoodRate = {String(dish?.rate)}
+                  FoodPhotoPath = {dish?.image}
+                  FoodName = {dish?.title}
+                  FoodDelivery = '0.99$ Delivery'
+                  FoodLink = 'Chocolate Cheesecake'
+                  FoodDescription={dish?.description}
+                  FoodRest_id={dish?.rest_id}
+                  
+                  />)}
+            </div>
+            
+            :<p>No dish to display</p>
+            }
+          
 
+            {/* <FoodCards />
             <FoodCards />
-            <FoodCards />
-            <FoodCards />
-          </div>
+            <FoodCards /> */}
 
 
 

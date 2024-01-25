@@ -16,6 +16,10 @@ export const FoodCards = ({
   FoodName = 'Chocolate Cheesecake',
   FoodPrepDuration = '15 - 25 min',
   FoodDelivery = '0.99$ Delivery',
+  FoodDescription = '',
+  Foodfee= '0.99$ ',
+  FoodRest_id=0,
+
   FoodLink = 'Chocolate Cheesecake'
 
 }) => {
