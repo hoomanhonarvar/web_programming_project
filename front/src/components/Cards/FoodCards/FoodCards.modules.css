@@ -1,0 +1,26 @@
+.FoodCardMainContainer a {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+
+.InfoContainerFood {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.InfoRowFood {
+  display: flex;
+  margin: 8px;
+  justify-content: center;
+  align-items: center;
+  color: var(--colorstextdark-626264100);
+  font-family: var(--text-caption-1-regular-18pt-line-height-font-family);
+  font-size: var(--text-caption-1-regular-20pt-line-height-font-size);
+  font-style: var(--text-caption-1-regular-18pt-line-height-font-style);
+  font-weight: var(--text-caption-1-regular-18pt-line-height-font-weight);
+  letter-spacing: var(--text-caption-1-regular-18pt-line-height-letter-spacing);
+  line-height: var(--text-caption-1-regular-18pt-line-height-line-height);
+}

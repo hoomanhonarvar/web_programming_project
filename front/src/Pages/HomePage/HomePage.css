@@ -1,0 +1,65 @@
+.HomePage {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.MainHomeScreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: 100%;
+  margin: 12px 32px;
+}
+
+.CategoryTitle {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  margin: 12px;
+}
+
+.Featured-restaurants-title{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  margin: 12px;
+}
+
+
+
+
+.Featured-restaurants-title {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+
+.Categories {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* margin: 48px 0px; */
+}
+
+.Cards {
+  margin: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.RestaurantCols{
+  display: flex ;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 16px 0px;
+}
+
+.FeaturedRst{
+  display: flex;
+  flex-direction: column;
+}

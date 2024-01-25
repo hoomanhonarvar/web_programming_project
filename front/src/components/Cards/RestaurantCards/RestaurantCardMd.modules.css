@@ -1,0 +1,60 @@
+.RestLogo {
+  background-color: rgba(247, 247, 247, 1);
+  padding: 16px;
+  border-radius: 16px;
+  height: 96px;
+  width: 96px;
+}
+
+.RestCardMainCont a{
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+
+}
+
+.Restinfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3px 24px;
+}
+
+.RestNameContainer h3 {
+  color: var(--colorstextdark-182135100);
+  font-family: var(--text-h4-bold-font-family);
+  font-size: var(--text-h4-bold-font-size);
+  font-style: var(--text-h4-bold-font-style);
+  font-weight: var(--text-h4-bold-font-weight);
+  width: 216px;
+}
+
+.RatingBox {
+  font-weight: bold;
+}
+
+.InfoContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.InfoRow {
+  display: flex;
+  margin: 8px;
+  justify-content: center;
+  align-items: center;
+  color: var(--colorstextdark-626264100);
+  font-family: var(--text-caption-1-regular-18pt-line-height-font-family);
+  font-size: var(--text-caption-1-regular-20pt-line-height-font-size);
+  font-style: var(--text-caption-1-regular-18pt-line-height-font-style);
+  font-weight: var(--text-caption-1-regular-18pt-line-height-font-weight);
+  letter-spacing: var(--text-caption-1-regular-18pt-line-height-letter-spacing);
+  line-height: var(--text-caption-1-regular-18pt-line-height-line-height);
+}
+
+
+
+.InfoIcon{
+  margin-right: 8px;
+}

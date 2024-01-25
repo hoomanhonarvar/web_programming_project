@@ -148,7 +148,7 @@ class RequestPasswordResetEmail(GenericAPIView):
 
 class PasswordTokenCheckAPIView(GenericAPIView):
     def get(self,request,uidb64,token):
-        redirect_url=request.GET.get('redirect_url')
+        redirect_url=request.GET.get('redir ect_url')
         try:
             id=smart_str(urlsafe_base64_decode(uidb64))
             user=User.object.get(id=id)

@@ -1,0 +1,25 @@
+
+  // const axiosPrivate=useAxiosPrivate();
+  // const navigate=useNavigate();
+  // const Location=useLocation();
+  // useEffect(()=>{
+  //   let isMounted=true;
+  //   const controller=new AbortController();
+    
+  //   const getUser=async()=>{
+  //     try{
+  //       const response=await useAxiosPrivate.get('/address',{
+  //         signal: controller.signal
+  //       });
+  //       console.log(response.data);
+  //     }catch(error){
+  //       console.error(error);
+  //       navigate('/sign-in',{state:{from:Location},replace:true});
+  //     }
+  //   }
+  //   return ()=>{
+  //     isMounted=false;
+  //     controller.abort();
+      
+  //   }
+  // },[])
