@@ -1,6 +1,7 @@
 import os
 
 import jwt
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework.generics import ListAPIView , RetrieveUpdateDestroyAPIView
 from django.shortcuts import get_object_or_404
 from .serializers import List_UserSerializer,RegisterSerializer,EmailVerificationSerializer,LoginSerializer,ResendEmailSerializer,RequestPasswordResetEmailSerializer,SetNewPasswordSerializer,LogoutSerializer
@@ -181,7 +182,6 @@ class PasswordTokenCheckAPI(GenericAPIView):
             except UnboundLocalError as e:
                 return Response({'error': 'Token is not valid, please request a new one'},
                                 status=status.HTTP_400_BAD_REQUEST)
-
 
 class SetNewPasswordAPIView(GenericAPIView):
     serializer_class = SetNewPasswordSerializer

@@ -14,7 +14,7 @@ urlpatterns = [
     path('ResendEmail/', ResendEmailVarification.as_view(), name="ResendEmail"),
     path('password-reset/<uidb64>/<token>',PasswordTokenCheckAPI.as_view(),name="password-reset-confirm"),
     path('request-reset-email/',RequestPasswordResetEmail.as_view(),name="request-reset-email"),
-    path('password-reset-complete',SetNewPasswordAPIView.as_view(),name="password-reset-complete"),
+    path('password-reset-complete/',SetNewPasswordAPIView.as_view(),name="password-reset-complete"),
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
