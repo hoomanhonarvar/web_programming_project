@@ -40,10 +40,10 @@ function App() {
 
         <Route path="/" element={<Layout />}>
           {/* publi url */}
+          <Route path="linkpage" element={ <LinkPage/> } />
         <Route path="Login" element={ <SignInDesktop/> } />
         <Route path="sign-up" element={ <SignUpDesktop/> } />
         <Route path="forgetpass" element={ <ForgetPass/> } />
-        <Route path="/" element={ <HomePage/> } />
         <Route path="unauthorized" element={<Unauthorized />} />
         <Route path="restaurant" element={ <Restaurant/> } />
         <Route path="fastDelivery" element={ <FastDelivery/> } />
@@ -56,6 +56,8 @@ function App() {
         <Route element={<PersistLogin />}>
 
         <Route element={<RequireAuth allowedRoles={[ROLES.User,ROLES.Admin,ROLES.Editor]}/>} >
+        <Route path="/" element={ <HomePage/> } />
+
         <Route path="settings" element={ <Setting/> } />
         <Route path="favourite" element={ <Favourite/> } />
         <Route path="orders" element={ <Orders/> } />

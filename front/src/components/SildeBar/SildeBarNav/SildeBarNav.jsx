@@ -5,10 +5,17 @@ import Feed from '../../../Pics/Icons/Icons/24px/Feed.svg'
 import Bookmark from '../../../Pics/Icons/Icons/24px/Bookmark.svg'
 import Document from '../../../Pics/Icons/Icons/24px/Document.svg'
 import Settings from '../../../Pics/Icons/Icons/24px/Settings.svg'
-
+import useLogout from '../../../hooks/useLogout'
 import {Link } from 'react-router-dom'
-
+import { useNavigate } from 'react-router-dom'
 function SildeBarNav() {
+  const navigate = useNavigate();
+    const logout = useLogout();
+
+    const signOut = async () => {
+        await logout();
+        navigate('/linkpage');
+    }
   return (
     <div>
       <ul className='NavbarList'>
@@ -78,6 +85,27 @@ function SildeBarNav() {
             </Link>
           </div>
         </li>
+
+
+
+
+        <li>
+          <div className="PageNameContainer">
+            {/* <Link to="/favourite">
+              <div className="PageIcon">
+                <img src={Bookmark} className='Icons' alt="" />
+              </div>
+              <div className="Title">
+                Favourite
+              </div>
+            </Link> */}
+            <button onClick={signOut}>Sign Out</button>
+
+          </div>
+        </li>
+
+
+
       </ul>
     </div>
   )
