@@ -13,19 +13,18 @@ import HomePage from "./Pages/HomePage/HomePage";
 import Favourite from "./Pages/Favourite/Favourite"
 import Orders from "./Pages/Orders/Orders"
 import Setting from "./Pages/Settings/Settings"
-import SildeBar from "./components/SildeBar/SildeBar";
 import RequireAuth from "./components/Auth/RequireAuth";
 import Layout from "./components/Layout/Layout";
 import LinkPage from "./Pages/Tmp/LinkPage";
 import Unauthorized from "./components/UnAuthorized/UnAuthorized";
 import PersistLogin from "./components/PresistLogin/PersistLogin";
+import UpdatePersonalInfo from "./components/Cards/UpdatePersonalInfo/UpdatePersonalInfo";
 
-
+import SetNewPass from "./Pages/SetNewPass/SetNewPass";
 
 import FastDelivery from "./Pages/FastDelivery/fastDelivery";
 import Popular from "./Pages/Popular/popular";
 import Restaurant from "./Pages/Restaurant/Restaurant";
-import setNewPass from "./Pages/SetNewPass/SetNewPass";
 const ROLES = {
   'User': 2001,
   'Editor': 1984,
@@ -34,16 +33,10 @@ const ROLES = {
 
 function App() {
   return (
-    <>
-    <SildeBar/>
+    
     <Routes>
-        <Route path="fastDelivery" element={ <FastDelivery/> } />
-        <Route path="popular" element={ <Popular/> } />
-        <Route path="restaurant" element={ <Restaurant/> } />
-        <Route path="setNewpass" element={ <setNewPass/> } />
-        <Route path="setting" element={ <Setting/> } />
-        <Route path="fav" element={ <Favourite/> } />
-        <Route path="order" element={ <Orders/> } />
+        
+        
 
         <Route path="/" element={<Layout />}>
           {/* publi url */}
@@ -52,6 +45,10 @@ function App() {
         <Route path="forgetpass" element={ <ForgetPass/> } />
         <Route path="/" element={ <HomePage/> } />
         <Route path="unauthorized" element={<Unauthorized />} />
+        <Route path="restaurant" element={ <Restaurant/> } />
+        <Route path="fastDelivery" element={ <FastDelivery/> } />
+        <Route path="popular" element={ <Popular/> } />
+
 
 
         
@@ -59,6 +56,13 @@ function App() {
         <Route element={<PersistLogin />}>
 
         <Route element={<RequireAuth allowedRoles={[ROLES.User,ROLES.Admin,ROLES.Editor]}/>} >
+        <Route path="settings" element={ <Setting/> } />
+        <Route path="favourite" element={ <Favourite/> } />
+        <Route path="orders" element={ <Orders/> } />
+        <Route path="setNewpass" element={ <SetNewPass/> } />
+        <Route path="updateInfo" element={ <UpdatePersonalInfo/> } />
+
+
 
         
 
@@ -69,7 +73,6 @@ function App() {
 
 
       </Routes>
-      </>
   );
 }
 

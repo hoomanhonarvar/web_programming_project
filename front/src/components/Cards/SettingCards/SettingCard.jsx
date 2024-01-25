@@ -5,14 +5,14 @@ import ProfilePurple from '../../../Pics/Icons/Icons/Bookmark.svg'
 import chevroneRight from '../../../Pics/Icons/Icons/Chevron-right.svg'
 export const SettingCard = ({
   Icon = { ProfilePurple },
-  OptionText = 'Text'
-
+  OptionText = 'Text',
+  link="#"
 
 }) => {
   return (
 
     <div className="SettingListItem">
-      <a href="#">
+      <a href={link}>
   <div className="Left">
        <div className="SettingIcon">
           <img src={Icon} alt="Icon" />

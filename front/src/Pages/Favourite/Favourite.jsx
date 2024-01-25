@@ -14,7 +14,7 @@ function Favourite() {
       */}
       
       
-      <UpdatePersonalInfo/>
+      {/* <UpdatePersonalInfo/> */}
 
 
     </div>

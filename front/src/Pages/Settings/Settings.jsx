@@ -1,6 +1,5 @@
 import React from 'react'
 import './Settings.modules.css'
-import SildeBar from '../../components/SildeBar/SildeBar'
 import Navbar from '../../components/Navbar/Navbar'
 import HeadingBoldTwo from '../../components/Labels/SignupLables/HeadingBoldTwo'
 import BodyText from '../../components/Labels/SignupLables/BodyText'
@@ -14,9 +13,12 @@ import Card from '../../Pics/Icons/Icons/Card.svg'
 import Support from '../../Pics/Icons/Icons/Support.svg'
 import newProfile from '../../Pics/Icons/Icons/Split-order.svg'
 import Money from '../../Pics/Icons/Icons/Money.svg'
-
+import SildeBar from '../../components/SildeBar/SildeBar'
 function Settings() {
   return (
+    <div className='main'>
+            <SildeBar/>
+
     <div className='SettingsPage'>
       <div className="MainSettingsScreen">
         {/* Nav */}
@@ -38,7 +40,7 @@ function Settings() {
 
 
           <div className="General">
-            <SettingCard Icon={User} OptionText='Personal information' />
+            <SettingCard Icon={User} OptionText='Personal information' link='updateInfo' />
             <SettingCard Icon={BookMark} OptionText='Saved addresses' />
             <SettingCard Icon={Mail} OptionText='Marketing preferences' />
           </div>
@@ -75,6 +77,7 @@ function Settings() {
 
       </div>
 
+    </div>
     </div>
   )
 }

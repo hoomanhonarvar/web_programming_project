@@ -1,12 +1,12 @@
 import React from 'react'
 import './Orders.css'
-import SildeBar from '../../components/SildeBar/SildeBar'
 import Navbar from '../../components/Navbar/Navbar'
 import HeadingBoldTwo from '../../components/Labels/SignupLables/HeadingBoldTwo'
-
+import SildeBar from '../../components/SildeBar/SildeBar'
 function Orders() {
   return (
     <div className='OrdersPage'>
+      <SildeBar/>
 
       {/* MainOrder
       // Nav

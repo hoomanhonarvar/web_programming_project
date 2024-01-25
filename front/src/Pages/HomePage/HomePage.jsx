@@ -13,11 +13,12 @@ import RstCat from '../../Pics/Icons/Icons/Category/RestaurantCat.svg'
 import MapCat from '../../Pics/Icons/Icons/Category/MapCat.svg'
 import RestaurantCardMd from '../../components/Cards/RestaurantCards/RestaurantCardMd'
 import FoodCards from '../../components/Cards/FoodCards/FoodCards'
-
+import SildeBar from '../../components/SildeBar/SildeBar'
 
 function HomePage() {
   return (
     <div className='HomePage'>
+      <SildeBar/>
       <div className="MainHomeScreen">
         {/* NavBarDesktop */}
         <Navbar />
