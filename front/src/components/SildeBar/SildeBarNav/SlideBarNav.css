@@ -2,7 +2,36 @@
   list-style: none;
   width: auto;
 }
+.hooman_button {
+  cursor: pointer;
 
+  background-color: var(--colorsprimary-50-3e-9d-100);
+  border-radius: 12px;
+  height: 64px;
+  position: relative;
+  /* display: flex; */
+  /* text-align: center; */
+align-items: center;
+padding:  0% 10%;
+    width: 100%;
+    font-family: "Open Sans-Regular", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  padding-left: 24px;
+}
+
+.hooman_button_1 {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: var(--colorsprimary-50-3e-9d-100);
+  font-family: var(--text-h3-bold-font-family);
+  font-size: var(--text-h3-bold-font-size);
+  font-style: var(--text-h3-bold-font-style);
+  font-weight: var(--text-h3-bold-font-weight);
+  text-align: center;
+  width: 100%;
+}
 .PageNameContainer a {
   display: flex;
   flex-direction: row;

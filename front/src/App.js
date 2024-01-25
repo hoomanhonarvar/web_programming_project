@@ -48,6 +48,8 @@ function App() {
         <Route path="restaurant" element={ <Restaurant/> } />
         <Route path="fastDelivery" element={ <FastDelivery/> } />
         <Route path="popular" element={ <Popular/> } />
+        <Route path="/" element={ <HomePage/> } />
+
 
 
 
@@ -56,7 +58,6 @@ function App() {
         <Route element={<PersistLogin />}>
 
         <Route element={<RequireAuth allowedRoles={[ROLES.User,ROLES.Admin,ROLES.Editor]}/>} >
-        <Route path="/" element={ <HomePage/> } />
 
         <Route path="settings" element={ <Setting/> } />
         <Route path="favourite" element={ <Favourite/> } />

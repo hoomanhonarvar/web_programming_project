@@ -1,5 +1,6 @@
 import React from 'react'
 import './SlideBarNav.css'
+
 import Home from '../../../Pics/Icons/Icons/24px/Home.svg'
 import Feed from '../../../Pics/Icons/Icons/24px/Feed.svg'
 import Bookmark from '../../../Pics/Icons/Icons/24px/Bookmark.svg'
@@ -8,14 +9,20 @@ import Settings from '../../../Pics/Icons/Icons/24px/Settings.svg'
 import useLogout from '../../../hooks/useLogout'
 import {Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import useAuth from '../../../hooks/useAuth'
 function SildeBarNav() {
+  const{auth}=useAuth();
   const navigate = useNavigate();
     const logout = useLogout();
 
     const signOut = async () => {
         await logout();
-        navigate('/linkpage');
+        navigate('/');
     }
+    const signIn=()=>{
+      navigate('/login');
+    }
+    console.log(auth);
   return (
     <div>
       <ul className='NavbarList'>
@@ -99,7 +106,13 @@ function SildeBarNav() {
                 Favourite
               </div>
             </Link> */}
-            <button onClick={signOut}>Sign Out</button>
+            {
+              
+              Object.keys(auth).length !== 0
+              ?<button className = "hooman_button"onClick={signOut}>Sign Out</button>
+              :<button className = "hooman_button_1" onClick={signIn}>Sign In</button>
+            }
+            
 
           </div>
         </li>

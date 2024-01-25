@@ -11,8 +11,8 @@ const LinkPage = () => {
             <br />
             <h2>Private</h2>
             <Link to="/">Home</Link>
-            <Link to="setting">setting</Link>
-            <Link to="order">Orders</Link>
+            <Link to="settings">setting</Link>
+            <Link to="orders">Orders</Link>
             
         </section>
     )
