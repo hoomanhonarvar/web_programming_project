@@ -24,7 +24,7 @@ export const RestaurantCardMd = ({
   return (
 
     <div className='RestCardMainCont'>
-      <Link to={RestID}>
+      <Link to={"/restaurant?id="+RestID}>
         <div className="RestLogo">
           <img src={RestLogo} alt="restpath" />
         </div>

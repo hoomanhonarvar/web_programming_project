@@ -36,7 +36,7 @@ export const OptionBox = ({
 
 OptionBox.propTypes = {
   loc: PropTypes.string,
-  Icon: PropTypes.object
+  Icon: PropTypes.string
 };
 
 export default OptionBox

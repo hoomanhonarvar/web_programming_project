@@ -20,12 +20,11 @@ export const FoodCards = ({
   Foodfee= '0.99$ ',
   FoodRest_id=0,
 
-  FoodLink = 'Chocolate Cheesecake'
+  FoodId = 0
 
 }) => {
   return (
     <div className='FoodCardMainContainer'>
-      <Link to={FoodLink}>
         <div className="FoodPhoto">
           <img src={FoodPhotoPath} alt="FoodPhoto" />
         </div>
@@ -71,7 +70,6 @@ export const FoodCards = ({
           </div>
 
         </div>
-      </Link>
     </div >
   );
 };
@@ -80,7 +78,7 @@ FoodCards.propTypes = {
   RestDist: PropTypes.string,
   FoodRate: PropTypes.string,
   FoodType: PropTypes.string,
-  FoodPhotoPath: PropTypes.object,
+  FoodPhotoPath: PropTypes.string,
   FoodName: PropTypes.string,
   FoodDelivery: PropTypes.string,
   FoodLink: PropTypes.string

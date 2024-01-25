@@ -28,7 +28,7 @@ export const BtnIcon = ({
 
 
 BtnIcon.propTypes = {
-  Icon: PropTypes.object,
+  Icon: PropTypes.string,
   bgColor: PropTypes.string
 };
 

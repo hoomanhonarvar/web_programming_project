@@ -16,8 +16,10 @@ import FoodCards from '../../components/Cards/FoodCards/FoodCards'
 import SildeBar from '../../components/SildeBar/SildeBar'
 import useAxiosPrivate from "./../../hooks/useAxiosPrivate"
 import axios from '../../api/axios'
-function HomePage() {
 
+  
+
+function HomePage() {
   const [rest,Setrest]=useState();
   const [dishes,Setdish]=useState();
   useEffect(()=>{
@@ -40,13 +42,8 @@ const getDishes=async()=>{
 }
 getRestaurants();
 getDishes();
-return ()=>{
-
-}},[])
+},[])
   
-  
-
-
 
   return (
     <div className='HomePage'>
@@ -178,13 +175,13 @@ return ()=>{
               {dishes.slice(0,3).map((dish,i)=>
                   <FoodCards  key={i} 
                   FoodRate = {String(dish?.rate)}
-                  FoodPhotoPath = {dish?.image}
+                  // FoodPhotoPath = {dish?.image}
                   FoodName = {dish?.title}
                   FoodDelivery = '0.99$ Delivery'
                   FoodLink = 'Chocolate Cheesecake'
                   FoodDescription={dish?.description}
                   FoodRest_id={dish?.rest_id}
-                  
+                  FoodId={dish?.id}
                   />)}
             </div>
             

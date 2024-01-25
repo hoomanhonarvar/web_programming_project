@@ -38,7 +38,7 @@ CardsCategoryCard.propTypes = {
     text: PropTypes.string,
     text1: PropTypes.string,
     LinkText: PropTypes.string,
-    iconsIconFill : PropTypes.object
+    iconsIconFill : PropTypes.string
 };
 
 

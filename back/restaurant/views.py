@@ -23,7 +23,7 @@ class restaurantListAPIView(ListAPIView):
 class restaurantDetailAPIView(RetrieveUpdateDestroyAPIView):
     serializer_class = restauranListSerializer
     queryset = restaurant.objects.all()
-    permission_classes = (IsAdminUser,)
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
 
 class like_restAPIView(GenericAPIView):

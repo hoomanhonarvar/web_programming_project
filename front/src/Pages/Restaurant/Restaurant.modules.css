@@ -4,3 +4,8 @@
   justify-content: start;
   margin: 12px 32px;
 }
+
+.Rest_side{
+  display: flex;
+  flex-direction: row;
+}

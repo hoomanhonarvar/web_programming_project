@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 import HBadge from '../Badges/HoursBadge/HBadge'
 import DBadge from '../Badges/DeliveryBadge/DBadge'
 import CBadge from '../Badges/CopounBadge/CBadge'
+import SildeBar from '../SildeBar/SildeBar'
 export const RestInfoBox = ({
 
   RestName = "Burger King",
@@ -29,9 +30,10 @@ export const RestInfoBox = ({
 
   
   return (
-
+    <>
+    
     <div className='RestInfoContainer'>
-
+    {/* <SildeBar/> */}
       {/* Row 1 : Title +  Badges */}
       <div className="InfoBoxTitle">
         <div className="InfoTitle">
@@ -78,6 +80,7 @@ export const RestInfoBox = ({
       </div>
 
     </div >
+    </>
   );
 };
 
