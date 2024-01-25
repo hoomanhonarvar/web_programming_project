@@ -16,9 +16,9 @@ import Setting from "./Pages/Settings/Settings"
 import SildeBar from "./components/SildeBar/SildeBar";
 import RequireAuth from "./components/Auth/RequireAuth";
 import Layout from "./components/Layout/Layout";
-import PersistLogin from './components/PresistLogin/PersistLogin';
 import LinkPage from "./Pages/Tmp/LinkPage";
 import Unauthorized from "./components/UnAuthorized/UnAuthorized";
+import PersistLogin from "./components/PresistLogin/PersistLogin";
 const ROLES = {
   'User': 2001,
   'Editor': 1984,
@@ -40,12 +40,15 @@ function App() {
 
         
         {/* private url */}
+        <Route element={<PersistLogin />}>
+
         <Route element={<RequireAuth allowedRoles={[ROLES.User,ROLES.Admin,ROLES.Editor]}/>} >
-        
+
         <Route path="setting" element={ <Setting/> } />
         <Route path="fav" element={ <Favourite/> } />
         <Route path="order" element={ <Orders/> } />
 
+        </Route>
         </Route>
         </Route>
         {/* catch all */}

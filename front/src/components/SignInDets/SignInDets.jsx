@@ -12,15 +12,15 @@ import {Link,useNavigate,useLocation} from 'react-router-dom'
 import { Navigate } from 'react-router-dom'
 import axios from '../../api/axios'
 import {useState,useEffect} from "react"
-import { useRef } from 'react'
+import { useRef ,Route} from 'react'
 import AuthContext from '../../context/AuthProvider'
 import useAuth from '../../hooks/useAuth'
-
+import PersistLogin from '../PresistLogin/PersistLogin'
 
 const LOGIN_URL="/user/Login/";
 
 const SignupDets = () => {
-  const { setAuth } = useAuth();
+  const { setAuth, persist, setPersist  } = useAuth();
   const emailRef=useRef();
   const errRef=useRef();
   const[errMsg,setErrMsg]=useState('');
@@ -55,7 +55,10 @@ const SignupDets = () => {
             );
         const accessToken = response.data?.tokens.access;
         const refreshToken=response.data?.tokens.refresh;
+
         console.log( accessToken);
+        console.log(refreshToken)
+        localStorage.setItem('refreshToken', JSON.stringify(refreshToken));
         const roles=[2001,1984,5150];
         setAuth({email,pwd,roles,accessToken,refreshToken})
         setEmail('');
@@ -88,7 +91,13 @@ const SignupDets = () => {
     }
   }
 
+const togglePersist=()=>{
+  setPersist(prev=>!prev);
+}
+useEffect(()=>{
+  localStorage.setItem("persist",persist)
 
+},[persist])
 
   return (
     <div className='SignupForm'>
@@ -141,7 +150,15 @@ const SignupDets = () => {
           <AlreadyText title="Forgot password?"  Link="/forgetpass"/>
           <Link to="/sign-up">
           <BtnPrimary title="Create an account" /></Link>
-     
+          <div className="persistCheck">
+                    <input
+                        type="checkbox"
+                        id="persist"
+                        onChange={togglePersist}
+                        checked={persist}
+                    />
+                    <label htmlFor="persist">Trust This Device</label>
+                </div>
 
          
 
