@@ -49,6 +49,8 @@ function App() {
         <Route path="fastDelivery" element={ <FastDelivery/> } />
         <Route path="popular" element={ <Popular/> } />
         <Route path="/" element={ <HomePage/> } />
+        <Route path="setNewpass" element={ <SetNewPass/> } />
+
 
 
 
@@ -62,7 +64,6 @@ function App() {
         <Route path="settings" element={ <Setting/> } />
         <Route path="favourite" element={ <Favourite/> } />
         <Route path="orders" element={ <Orders/> } />
-        <Route path="setNewpass" element={ <SetNewPass/> } />
         <Route path="updateInfo" element={ <UpdatePersonalInfo/> } />
 
 
