@@ -1,0 +1,18 @@
+.MainfastdeliveryScreen{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin: 12px 32px;
+}
+
+.FastDelTitle{
+  margin: 48px 0px 32px;
+}
+
+.FastDelRow{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px 0px;
+}

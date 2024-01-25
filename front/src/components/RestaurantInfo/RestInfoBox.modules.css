@@ -1,0 +1,57 @@
+.RestInfoContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 32px 0px 48px;
+}
+
+.InfoBoxTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.InfoTitle {
+  color: var(--colorstextdark-182135100);
+  font-family: var(--text-h1-bold-font-family);
+  font-size: var(--text-h1-bold-font-size);
+  font-style: var(--text-h1-bold-font-style);
+  font-weight: var(--text-h1-bold-font-weight);
+  letter-spacing: var(--text-h1-bold-letter-spacing);
+  line-height: var(--text-h1-bold-line-height);
+  width: 577px;
+}
+
+.InfoRowRsInfo {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-right: 16px;
+  color: var(--colorstextdark-626264100);
+  font-family: var(--text-caption-1-regular-18pt-line-height-font-family);
+  font-size: var(--text-body-normal-regular-font-size);
+  font-style: var(--text-caption-1-regular-18pt-line-height-font-style);
+  font-weight: var(--text-caption-1-regular-18pt-line-height-font-weight);
+  letter-spacing: var(--text-caption-1-regular-18pt-line-height-letter-spacing);
+  line-height: var(--text-caption-1-regular-18pt-line-height-line-height);
+}
+
+
+
+
+.InfoBoxDesc p {
+  color: var(--colorstextdark-626264100);
+  font-family: var(--text-body-normal-regular-font-family);
+  font-size: var(--text-body-normal-regular-font-size);
+  font-style: var(--text-body-normal-regular-font-style);
+  font-weight: var(--text-body-normal-regular-font-weight);
+  letter-spacing: var(--text-body-normal-regular-letter-spacing);
+  line-height: var(--text-body-normal-regular-line-height);
+  width: 577px;
+  margin: 12px 0px 24px;
+}
+
+.Badges {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

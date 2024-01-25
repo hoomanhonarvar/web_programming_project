@@ -1,0 +1,13 @@
+.HoursBadge {
+  display: flex;
+  justify-content: center;
+  padding: 4px 8px;
+  color: var(--colorstextdark-182135100);
+  font-family: var(--text-body-normal-regular-font-family);
+  font-style: var(--text-body-normal-regular-font-style);
+  font-weight: var(--text-body-normal-regular-font-weight);
+  align-items: center;
+  background-color: var(--colorsgrayf-7f-7f-7100);
+  border-radius: 8px;
+  margin: 0px 8px;
+}

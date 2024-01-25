@@ -1,0 +1,14 @@
+.DeliveryBadge {
+  display: flex;
+  justify-content: center;
+  padding: 4px 8px;
+  color: var(--colors-primary-503-e-9-d-100, #503E9D);
+  font-family: var(--text-body-normal-regular-font-family);
+  font-style: var(--text-body-normal-regular-font-style);
+  font-weight: var(--text-body-normal-regular-font-weight);
+  align-items: center;
+  background-color: var(--colorsprimary-50-3e-9d-10);
+  border-radius: 8px;
+  margin: 0px 8px;
+
+}

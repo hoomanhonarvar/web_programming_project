@@ -1,0 +1,6 @@
+.MainpopularScreen{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin: 12px 32px;
+}
