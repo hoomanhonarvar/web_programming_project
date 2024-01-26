@@ -1,0 +1,40 @@
+.MainPreviousOrderCard {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--colorsgrayf-7f-7f-7100);
+    border-radius: 16px;
+    min-width: 336px;
+    justify-content: space-between;
+    margin: 16px 16px 16px 0px;
+  }
+  
+  .DateAndTime {
+    margin: 16px 0px;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .OrderTimeDate {
+    margin: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: var(--colorstextdark-626264100);
+    font-family: var(--text-caption-1-regular-18pt-line-height-font-family);
+    font-size: var(--text-caption-1-regular-18pt-line-height-font-size);
+    font-style: var(--text-caption-1-regular-18pt-1ine-height-font-style);
+    font-weight: var(--text-caption-1-regular-18pt-line-height-font-weight);
+  }
+  
+  .POrderIcon {
+    margin-right: 8px;
+  }
+  
+  
+  .POrderBtns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }

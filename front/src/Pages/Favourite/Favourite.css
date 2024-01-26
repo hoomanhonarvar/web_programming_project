@@ -1,5 +1,11 @@
 .FavouritePage {
+  margin:12px 32px;
+  width: 100%;
+}
+
+.main_fav{
   display: flex;
   flex-direction: row;
-  height: 100%;
+  width: 100%;
 }
+

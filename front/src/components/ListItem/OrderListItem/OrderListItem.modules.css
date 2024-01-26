@@ -1,0 +1,39 @@
+.OrderItem {
+  display: flex;
+  flex-direction: row;
+  margin: 16px 0px;
+}
+
+
+.DishQuantity {
+  background-color: var(--colorslightffffff-100);
+  border-radius: 4px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  padding: 8px;
+  color: var(--colorsgraya-3a-3a-4100);
+  font-family: var(--text-h6-bold-capitalized-font-family);
+  font-size: var(--text-h6-bold-capitalized-font-size);
+  font-style: var(--text-h6-bold-capitalized-font-style);
+  font-weight: var(--text-h6-bold-capitalized-font-weight);
+  text-align: center;
+
+}
+
+.ItemDishName{
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  height: 24px;
+  color: var(--colorstextdark-182135100);
+  font-family: var(--text-h6-bold-capitalized-font-family);
+  font-size: var(--text-h6-bold-capitalized-font-size);
+  font-style: var(--text-h6-bold-capitalized-font-style);
+  font-weight: var(--text-h6-bold-capitalized-font-weight);
+  text-align: center;
+}
