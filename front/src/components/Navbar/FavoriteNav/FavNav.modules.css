@@ -1,0 +1,29 @@
+.FavNavbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+
+}
+
+.ItemTab a {
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 8px;
+  padding: 12px;
+  background-color: var(--colorsgrayf-7f-7f-7100);
+  margin: 0px 8px;
+}
+
+/* background-color: var(--colorsprimary-50-3e-9d-100); */
+
+
+.ItemTabName {
+  color: var(--colors-text-dark-626264100, #626264);
+  margin: 0px 12px;
+  font-family: var(--text-h6-bold-capitalized-font-family);
+  font-size: var(--text-h6-bold-capitalized-font-size);
+  font-style: var(--text-h6-bold-capitalized-font-style);
+  font-weight: var(--text-h6-bold-capitalized-font-weight);
+}

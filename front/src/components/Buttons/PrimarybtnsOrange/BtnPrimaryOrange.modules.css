@@ -1,0 +1,22 @@
+.buttons-primary-Orange {
+  background-color: var(--colorssecondaryfb-6d-3a-100);
+  border-radius: 12px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+}
+
+
+.btnPO {
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: var(--colorssecondaryfb-6d-3a-100);
+  border: none;
+  color: var(--colorstextlightf-7fafc-100);
+  font-family: var(--text-h3-bold-font-family);
+  font-style: var(--text-h3-bold-font-style);
+  font-weight: var(--text-h3-bold-font-weight);
+  text-align: center;
+  width: 144px;
+}

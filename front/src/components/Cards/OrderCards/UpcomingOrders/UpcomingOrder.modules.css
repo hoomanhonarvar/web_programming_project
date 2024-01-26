@@ -1,0 +1,111 @@
+.MainUpcomingOrderCard {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--colorsgrayf-7f-7f-7100);
+  border-radius: 16px;
+  min-width: 336px;
+  justify-content: space-between;
+  margin: 16px 16px 16px 0px;
+}
+
+.Orderlabel .order-number {
+  color: var(--colorstextdark-626264100);
+  font-family: var(--text-body-small-regular-font-family);
+  font-size: var(--text-body-small-regular-font-size);
+  font-style: var(--text-body-small-regular-font-style);
+  font-weight: var(--text-body-small-regular-font-weight);
+  line-height: var(--text-body-small-regular-line-height);
+  text-align: right;
+}
+
+.RestNamelabel .title {
+  color: var(--colorstextdark-182135100);
+  font-family: var(--text-h4-bold-font-family);
+  font-size: var(--text-h4-bold-font-size);
+  font-style: var(--text-h4-bold-font-style);
+  font-weight: var(--text-h4-bold-font-weight);
+  line-height: var(--text-h4-bold-line-height);
+}
+
+.UpcomingTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.UpcomingTimer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#iconTime {
+  display: flex;
+  justify-content: center;
+  margin: 4px 0px;
+}
+
+#ArivalTime {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-left: 16px;
+  margin: 4px 0px;
+
+}
+
+
+#TrackBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  width: 100%;
+
+}
+
+#TrackBtn .buttons-primary {
+  font-size: 24px !important;
+  font-weight: 300 !important;
+  width: 80%;
+  height: 40px;
+}
+
+#TrackBtn .buttons-primary .btnP {
+
+  color: var(--colorstextlightf-7fafc-100);
+  font-family: var(--text-h5-bold-font-family);
+  font-size: var(--text-h5-bold-font-size);
+  font-style: var(--text-h5-bold-font-style);
+  font-weight: var(--text-h5-bold-font-weight);
+}
+
+.Time {
+  color: var(--colorstextdark-182135100);
+  font-family: var(--text-h2-bold-font-family);
+  font-size: var(--text-h2-bold-font-size);
+  font-style: var(--text-h2-bold-font-style);
+  font-weight: var(--text-h2-bold-font-weight);
+  left: 0;
+  letter-spacing: var(--text-h2-bold-letter-spacing);
+  line-height: var(--text-h2-bold-line-height);
+  top: 0;
+  white-space: nowrap;
+  width: 136px;
+}
+
+.ArrivalTimeText {
+  color: var(--colorstextdark-626264100);
+  font-family: var(--text-body-small-regular-font-family);
+  font-size: var(--text-body-small-regular-font-size);
+  font-style: var(--text-body-small-regular-font-style);
+  font-weight: var(--text-body-small-regular-font-weight);
+  left: 0;
+  letter-spacing: var(--text-body-small-regular-letter-spacing);
+  line-height: var(--text-body-small-regular-line-height);
+  top: 0;
+  width: 136px;
+
+}

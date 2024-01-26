@@ -49,7 +49,10 @@ function App() {
         <Route path="fastDelivery" element={ <FastDelivery/> } />
         <Route path="popular" element={ <Popular/> } />
         <Route path="/" element={ <HomePage/> } />
+        <Route path="/explore" element={ <HomePage/> } />
+
         <Route path="setNewpass" element={ <SetNewPass/> } />
+
 
 
 
