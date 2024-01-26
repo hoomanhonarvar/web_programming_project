@@ -5,19 +5,33 @@ import "./OrderListItem.modules.css";
 
 export const OrderListItme = ({
   DishName = "CheeseCake",
-  Quantity = 1
+  Quantity = 1,
+  dish_list={}
+
+
 }) => {
+
+  console.log(dish_list)
   return (
-    <div className="OrderItem" >
+    <>
+      {Object.keys(dish_list).length !== 0
+      ?<>
+      
+        {dish_list.map((dish,i)=>
+        <div className="OrderItem" >
       <div className="DishQuantity">
-        {Quantity}
-      </div>
+        {(dish+'').split(':')[0]}
+       </div>
 
       <div className="ItemDishName">
-        {DishName}
+      {(dish+'').split(':')[1]}
       </div>
-
-    </div>
+      </div>)}
+      </>
+          :<p></p>
+      }
+      
+      </>
   );
 };
 

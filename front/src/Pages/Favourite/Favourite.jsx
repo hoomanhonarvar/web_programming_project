@@ -32,10 +32,7 @@ function Favourite() {
   const [rest,Setrest]=useState();
   const [dishes,Setdish]=useState();
   useEffect(()=>{
-
-
-
-    const getDishes=async()=>{
+  const getDishes=async()=>{
       try{
       const response=await axios.get(DISH_LIKE_URL,
         config      

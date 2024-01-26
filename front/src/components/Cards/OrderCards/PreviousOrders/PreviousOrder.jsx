@@ -9,10 +9,11 @@ import CompletedBadge from '../../../Badges/CompletedBadge/CompletedBadge';
 import CancledBadge from '../../../Badges/CancledBadge/CancledBadge';
 import { OrderListItme } from '../../../ListItem/OrderListItem/OrderListItem';
 export const PreviousOrder = ({
-
   RestName = 'Burger King',
   OrderTime = '11:54 PM',
-  OrederDate = 'September 16, 2020'
+  OrederDate = 'September 16, 2020',
+  Finish_cancle="F",
+  dish_list={}
 
 }) => {
   return (
@@ -27,7 +28,11 @@ export const PreviousOrder = ({
         </div>
         <div className="Badge">
           <div className="badge">
-            <CancledBadge />
+            {Finish_cancle==="F"
+            ?<CompletedBadge/>
+            :<CancledBadge />
+            }
+            
           </div>
         </div>
 
@@ -46,7 +51,7 @@ export const PreviousOrder = ({
       </div>
 
       {/* OrderList */}
-      <OrderListItme />
+      <OrderListItme dish_list={dish_list}/>
       {/* Buttons */}
 
 

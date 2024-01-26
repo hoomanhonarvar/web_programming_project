@@ -23,10 +23,11 @@ class Upcoming_orders_list_Serializer(serializers.ModelSerializer):
 
     class Meta:
         model=cart
-        fields=('Estimated_arrival','rest_name')
+        fields=('Estimated_arrival','rest_name','id')
 
 class Previous_orders_list_Serializer(serializers.ModelSerializer):
+    dish_cart= serializers.StringRelatedField(many=True,read_only=True)
 
     class Meta:
         model=cart
-        fields=('id','time','date','finish_cancel','rest_name')
+        fields=('id','time','date','finish_cancel','rest_name','dish_cart')
