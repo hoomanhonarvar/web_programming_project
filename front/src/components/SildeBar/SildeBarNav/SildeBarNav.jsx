@@ -20,7 +20,7 @@ function SildeBarNav() {
         navigate('/');
     }
     const signIn=()=>{
-      navigate('/login');
+      navigate('login');
     }
     console.log(auth);
   return (

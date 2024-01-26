@@ -5,7 +5,7 @@ from rest_framework.generics import RetrieveUpdateDestroyAPIView,CreateAPIView,L
 from .models import dish
 from cart.models import cart,cart_dish_table
 from .serializers import list_of_dishes_Serializer
-from rest_framework.permissions import IsAdminUser
+from rest_framework.permissions import IsAdminUser, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from restaurant.models import restaurant
@@ -42,8 +42,10 @@ class like_dishAPIView(GenericAPIView):
 
 class favourite_dishAPIView(ListAPIView):
     serializer_class = list_of_dishes_Serializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
     def get_queryset(self):
         user = self.request.user
+
         return dish.objects.filter(fav__username__in=[user.username])
 
 

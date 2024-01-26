@@ -1,5 +1,6 @@
 import React from 'react'
 import './SignInDets'
+import { useLocalStorage } from '../../hooks/useLocalStorage'
 import Mail from '../../Pics/Icons/Icons/20px/Mail.svg'
 import Keyicon from '../../Pics/Icons/Icons/24px/Key.svg'
 import HeadingBold from '../Labels/SignupLables/HeadingBold'
@@ -20,6 +21,7 @@ import PersistLogin from '../PresistLogin/PersistLogin'
 const LOGIN_URL="/user/Login/";
 
 const SignupDets = () => {
+
   const { setAuth, persist, setPersist  } = useAuth();
   const emailRef=useRef();
   const errRef=useRef();
@@ -30,6 +32,9 @@ const SignupDets = () => {
 
   const [email,setEmail]=useState('');
   const[pwd,setPwd]=useState('');
+
+  // const [email_store, setEmail_store] = useLocalStorage("email", "");
+  // const [pwd_store, setPwd_store] = useLocalStorage("pwd", "");
 
   useEffect(()=>{
     emailRef.current.focus();
@@ -64,6 +69,8 @@ const SignupDets = () => {
         setEmail('');
         setPwd('');
         console.log(from)
+        localStorage.setItem('email', email);
+        localStorage.setItem('pwd',pwd);
         navigate(from, { replace: true })
         
 
@@ -94,10 +101,13 @@ const SignupDets = () => {
 const togglePersist=()=>{
   setPersist(prev=>!prev);
 }
+
 useEffect(()=>{
   localStorage.setItem("persist",persist)
+  
+  localStorage.setItem("email",email);
 
-},[persist])
+},[persist,email])
 
   return (
     <div className='SignupForm'>
@@ -122,7 +132,9 @@ useEffect(()=>{
             <div className="field">
               <FormLable title="EMAIL ADDRESS" />
               <input placeholder='markclarke@gmail.com' className='forminp' type="email" name="emailadress" id="" 
-               onChange={(e)=>setEmail(e.target.value)}
+               onChange={(e)=>setEmail(e.target.value)
+                          
+              }
                required
 
                ref={emailRef}

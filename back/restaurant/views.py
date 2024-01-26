@@ -3,7 +3,7 @@ from rest_framework.generics import CreateAPIView,ListAPIView,RetrieveUpdateDest
 from dish.models import dish
 from .serializers import restauranListSerializer
 from .models import restaurant
-from rest_framework.permissions import IsAdminUser,IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAdminUser, IsAuthenticatedOrReadOnly, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status,views
 from dish.serializers import list_of_dishes_tmp_Serializer
@@ -41,10 +41,12 @@ class like_restAPIView(GenericAPIView):
 
 class favourite_restAPIView(ListAPIView):
     serializer_class = restauranListSerializer
-
+    queryset = restaurant.objects.all()
     def get_queryset(self):
-        user=self.request.user
+
+        user = self.request.user
         return restaurant.objects.filter(fav__username__in=[user.username])
+
 
 
 class list_of_dishes(ListAPIView):

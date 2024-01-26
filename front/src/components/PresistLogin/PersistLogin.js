@@ -9,6 +9,8 @@ const PersistLogin=()=>{
     const{auth,persist}=useAuth();
     console.log("auth")
 console.log(auth);
+
+
 const refresh=useRefreshToken(auth);
 
     useEffect(()=>{

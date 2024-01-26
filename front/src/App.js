@@ -19,7 +19,8 @@ import LinkPage from "./Pages/Tmp/LinkPage";
 import Unauthorized from "./components/UnAuthorized/UnAuthorized";
 import PersistLogin from "./components/PresistLogin/PersistLogin";
 import UpdatePersonalInfo from "./components/Cards/UpdatePersonalInfo/UpdatePersonalInfo";
-
+import RestFav from "./components/Favs/RestFav/RestFav";
+import DishFav from "./components/Favs/DishFav/DishFav";
 import SetNewPass from "./Pages/SetNewPass/SetNewPass";
 
 import FastDelivery from "./Pages/FastDelivery/fastDelivery";
@@ -68,13 +69,14 @@ function App() {
         <Route path="favourite" element={ <Favourite/> } />
         <Route path="orders" element={ <Orders/> } />
         <Route path="updateInfo" element={ <UpdatePersonalInfo/> } />
+        
 
-
+            </Route>
+        </Route>
 
         
 
-        </Route>
-        </Route>
+        
         </Route>
         {/* catch all */}
 

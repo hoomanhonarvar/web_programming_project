@@ -35,7 +35,7 @@ export const SettingCard = ({
 
 
 SettingCard.propTypes = {
-  Icon: PropTypes.object,
+  Icon: PropTypes.string,
   OptionText: PropTypes.string
 };
 

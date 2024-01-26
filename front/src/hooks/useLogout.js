@@ -4,6 +4,7 @@ import useAuth from "./useAuth";
 const useLogout = () => {
     const { setAuth } = useAuth();
     const refreshToken = JSON.parse(localStorage.getItem('refreshToken'));
+
     const logout = async () => {
         setAuth({});
         try {

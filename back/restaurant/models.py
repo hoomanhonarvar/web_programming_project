@@ -19,7 +19,7 @@ class restaurant (models.Model):
     delivery=models.FloatField(default=0)
     name=models.CharField(max_length=20)
     image=models.ImageField(upload_to='images/restaurant/')
-    fav=models.ManyToManyField(User,related_name='favourite_restaurant',blank=True)
+    fav=models.ManyToManyField(to=User,related_name='favourite_restaurant',blank=True)
     street_name = models.CharField(max_length=20,default="")
     city = models.CharField(max_length=20,default="")
     zipcode = models.CharField(max_length=12,default="")

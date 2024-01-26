@@ -8,7 +8,7 @@ class list_of_dishes_Serializer(serializers.ModelSerializer):
 
     class Meta:
         model=dish
-        exclude=('fav',)
+        exclude =('fav',)
 
 
 class list_of_dishes_tmp_Serializer(serializers.ModelSerializer):

@@ -11,6 +11,6 @@ class dish(models.Model):
     rate=models.IntegerField(default=5,validators=[MinValueValidator(0),
     MaxValueValidator(5)])
     rest_id=models.ForeignKey(to=restaurant,null=True,on_delete=models.CASCADE)
-    fav=models.ManyToManyField(User,related_name='favourite_dish',blank=True)
+    fav=models.ManyToManyField(to=User,related_name='favourite_dish',blank=True)
     def __str__(self):
         return self.title
