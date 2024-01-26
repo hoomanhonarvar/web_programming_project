@@ -20,26 +20,17 @@ const DISH_LIKE_URL="dish/fav_list/"
 function Favourite() {
   const{auth}=useAuth();
 
-  let base64 = require("base-64"); // install it before use from npm i base-64
-
-
+  let base64 = require("base-64"); 
   const email=localStorage.getItem('email');
   const pwd=localStorage.getItem('pwd')
-
-
   const config = {
     headers: { 'Content-Type': 'application/json' ,
     Authorization: "Basic " + base64.encode(email + ":" + pwd),
   },credentials: 'include',
   
 };
-
   const [rest,Setrest]=useState();
   const [dishes,Setdish]=useState();
-  
-
-
-
   useEffect(()=>{
 
 

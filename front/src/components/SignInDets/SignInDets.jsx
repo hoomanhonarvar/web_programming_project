@@ -63,14 +63,15 @@ const SignupDets = () => {
 
         console.log( accessToken);
         console.log(refreshToken)
-        localStorage.setItem('refreshToken', JSON.stringify(refreshToken));
+        localStorage.setItem('refreshToken', refreshToken);
+        localStorage.setItem('email', email);
+        localStorage.setItem('pwd',pwd);
         const roles=[2001,1984,5150];
         setAuth({email,pwd,roles,accessToken,refreshToken})
         setEmail('');
         setPwd('');
         console.log(from)
-        localStorage.setItem('email', email);
-        localStorage.setItem('pwd',pwd);
+        
         navigate(from, { replace: true })
         
 
@@ -105,9 +106,8 @@ const togglePersist=()=>{
 useEffect(()=>{
   localStorage.setItem("persist",persist)
   
-  localStorage.setItem("email",email);
 
-},[persist,email])
+},[persist])
 
   return (
     <div className='SignupForm'>

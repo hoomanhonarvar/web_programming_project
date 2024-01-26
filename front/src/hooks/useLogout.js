@@ -3,7 +3,7 @@ import useAuth from "./useAuth";
 
 const useLogout = () => {
     const { setAuth } = useAuth();
-    const refreshToken = JSON.parse(localStorage.getItem('refreshToken'));
+    const refreshToken =localStorage.getItem('refreshToken');
 
     const logout = async () => {
         setAuth({});
@@ -15,7 +15,7 @@ const useLogout = () => {
                 credentials:'included'
             });
             console.log(response)
-            localStorage.setItem('refreshToken',JSON.parse( ''));
+            localStorage.setItem('refreshToken','');
 
         } catch (err) {
             console.error(err);

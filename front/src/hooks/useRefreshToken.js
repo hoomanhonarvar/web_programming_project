@@ -3,7 +3,7 @@ import useAuth from './useAuth';
 const useRefreshToken = () => {
     const { setAuth } = useAuth();
     const { auth } = useAuth();
-    const refreshToken = JSON.parse(localStorage.getItem('refreshToken'));
+    const refreshToken = localStorage.getItem('refreshToken');
     
     const refresh = async () => {
 

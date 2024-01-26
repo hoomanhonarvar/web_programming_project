@@ -16,8 +16,13 @@ function SildeBarNav() {
     const logout = useLogout();
 
     const signOut = async () => {
+      
         await logout();
+        localStorage.setItem('email', "");
+      localStorage.setItem('pwd',"");
+        localStorage.setItem('persist',false);
         navigate('/');
+        
     }
     const signIn=()=>{
       navigate('login');
