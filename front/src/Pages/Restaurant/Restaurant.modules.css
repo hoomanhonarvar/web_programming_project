@@ -1,11 +1,17 @@
 .MainRestaurantScreen {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: center;
   margin: 12px 32px;
-}
+  }
 
 .Rest_side{
   display: flex;
   flex-direction: row;
+}
+
+.RestCardMainCont{
+width: 100%;
+display: flex;
+flex-direction: column ;
 }

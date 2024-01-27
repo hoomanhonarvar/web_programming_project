@@ -59,7 +59,6 @@ function RestaurantPage(){
 
 
 
-
   return (
     <div className='Rest_side'>
                 <div className='OverLay' id='mavi'></div>
@@ -74,7 +73,7 @@ function RestaurantPage(){
 
 
         {/* Banner */}
-        <RestBanner/>
+        <RestBanner RestID={queryParameters.get("id")}/>
 
         {/* Information */}
         <RestInfoBox 

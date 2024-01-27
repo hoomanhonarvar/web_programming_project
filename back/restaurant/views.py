@@ -39,6 +39,19 @@ class like_restAPIView(GenericAPIView):
                 rest.fav.add(request.user)
             return Response(status=status.HTTP_204_NO_CONTENT)
 
+
+class like_doNotLike(GenericAPIView):
+    def get(self, request, pk):
+        res_id = pk
+        if not restaurant.objects.filter(id=res_id).exists():
+            return Response({'error': 'this id is not exists'}, status=status.HTTP_404_NOT_FOUND)
+        else:
+            rest = restaurant.objects.get(id=res_id)
+            if rest.fav.filter(id=request.user.id).exists():
+               return Response(status=status.HTTP_200_OK)
+            else:
+                return Response(status=status.HTTP_404_NOT_FOUND)
+
 class favourite_restAPIView(ListAPIView):
     serializer_class = restauranListSerializer
     queryset = restaurant.objects.all()
