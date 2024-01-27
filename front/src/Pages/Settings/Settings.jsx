@@ -15,9 +15,17 @@ import newProfile from '../../Pics/Icons/Icons/Split-order.svg'
 import Money from '../../Pics/Icons/Icons/Money.svg'
 import Cart from '../../components/Cart/Cart'
 import SildeBar from '../../components/SildeBar/SildeBar'
+import SildebarProfile from '../../components/sildebarprofile/SildebarProfile'
+import UpdatePersonalInfo from '../../components/Cards/UpdatePersonalInfo/UpdatePersonalInfo'
 function Settings() {
+  const OpenInfoEdit = () => {
+    document.getElementById('PInfo').style.display = "flex";
+    document.getElementById('mavi').style.display="block";
+  }
   return (
     <div className='main'>
+                      {/* <SildebarProfile/> */}
+
                 <div className='OverLay' id='mavi'></div>
                 <Cart/>
 
@@ -44,7 +52,7 @@ function Settings() {
 
 
           <div className="General">
-            <SettingCard Icon={User} OptionText='Personal information' link='updateInfo' />
+          <div className="UserInfo" onClick={OpenInfoEdit}><SettingCard Icon={User} OptionText='Personal information' /></div>
             <SettingCard Icon={BookMark} OptionText='Saved addresses' />
             <SettingCard Icon={Mail} OptionText='Marketing preferences' />
           </div>
@@ -75,12 +83,14 @@ function Settings() {
 
 
         </div>
+        
 
-
-
-
+        <div className="Update" id='UpdateInfo'>
+      <UpdatePersonalInfo/>
       </div>
 
+      </div>
+      
     </div>
     </div>
   )

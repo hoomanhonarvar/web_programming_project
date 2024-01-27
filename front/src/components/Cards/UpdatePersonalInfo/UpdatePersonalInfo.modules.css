@@ -8,31 +8,86 @@
   border: 1px solid #bbb;
   width: 400px;
   padding: 32px;
+  display: none;
+
 
 }
 
-.PersonalInfoTitle{
+.PersonalInfoTitle {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  margin-bottom: 20px;
+}
+
+.ProfileImg {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 
 
-.field{
+
+
+.field {
   width: 268px;
 }
 
 
-.bgIcon{
+.bgIcon {
   width: 48px;
   height: 48px;
 }
 
 
-.updateInfo{
+.updateInfo {
   padding: 16px 0px;
   display: flex;
   align-items: center;
+}
+
+
+
+.ProfileImageControlBtns {
+  display: flex;
+  flex-direction: row;
+ 
+  justify-content: space-between;
+
+}
+
+.ProfileImageControlBtns>.buttons-primary>.btnP {
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  /* Text/H5/Bold */
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  /* 171.429% */
+ 
+}
+
+
+.ProfileImageControlBtns>.buttons-secondary>.btnS {
+
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  /* Text/H5/Bold */
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+
+}
+
+.ProfileImageControlBtns .buttons-primary,
+.ProfileImageControlBtns .buttons-secondary {
+  padding: 2px 16px;
+  margin: 16px;
+  width: 120px;
+  height: 48px;
 }

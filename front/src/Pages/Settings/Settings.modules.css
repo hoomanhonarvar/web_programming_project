@@ -18,3 +18,18 @@ justify-content: start;
 
 margin: 12px 32px;
 }
+
+
+
+.Update{
+  position: absolute;
+  z-index: 10;
+  top: 5%;
+  left: 35%;
+}
+
+#out_button{
+  cursor: pointer;
+  border:none;
+  background-color: transparent;
+}

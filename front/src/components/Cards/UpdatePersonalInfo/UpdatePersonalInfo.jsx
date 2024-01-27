@@ -10,14 +10,24 @@ import FormLable from '../../Labels/SignupLables/FormLable'
 import UserBG from '../../../Pics/Icons/Icons/Bg-Icons/UserBgIcon.svg'
 import MailBG from '../../../Pics/Icons/Icons/Bg-Icons/MailBgIcon.svg'
 import PhoneBG from '../../../Pics/Icons/Icons/Bg-Icons/PhoneBgIcon.svg'
-
+import avatar from '../../../Pics/Avatar/Image.svg'
+import BtnSecondary from '../../Buttons/Secondarybtns/BtnSecondary'
 function UpdatePersonalInfo() {
+
+  const CloseUpdateInfo = () => {
+    document.getElementById('PInfo').style.display = "none";
+    document.getElementById('mavi').style.display = "none";
+  }
+
+
   return (
-    <div className='PInfoContainer'>
+    <div className='PInfoContainer' id='PInfo'>
       {/* title + Icon */}
       <div className="PersonalInfoTitle">
-        <HeadingBoldTwo title='Personal Information' />
-        <Link to={Settings}><img src={close} alt="out" /></Link>
+        <HeadingBoldTwo className="Title" title='Personal Information' />
+        <button id="out_button"onClick={CloseUpdateInfo}>
+          <img src={close} alt="out" />
+        </button>
       </div>
       <div className="TitleOfBox">
         <SettingBodyText title='Profile image' />
@@ -27,7 +37,13 @@ function UpdatePersonalInfo() {
 
       <div className="ProfilePicSection">
         <div className="ProfileImg">
-
+          <div className="Img">
+            <img src={avatar} alt="avatar" />
+          </div>
+          <div className="ProfileImageControlBtns">
+            <BtnPrimary title="Upload" />
+            <BtnSecondary title="Delete" />
+          </div>
         </div>
       </div>
 
