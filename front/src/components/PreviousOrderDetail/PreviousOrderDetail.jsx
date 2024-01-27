@@ -9,7 +9,7 @@ import BtnPrimary from '../Buttons/Primarybtns/BtnPrimary'
 import { CartListItem } from '../ListItem/CartListItem/CartListItem'
 import BtnIcon from '../Buttons/IconBtns/BtnIcon'
 import plus from '../../Pics/Icons/Icons/24px/Plus.svg'
-
+import OrderItem from '../ListItem/OrderListItem/OrderListItem'
 
 export const OrderDets = ({
   RestName = "Pizza Hut",
@@ -55,15 +55,17 @@ export const OrderDets = ({
         </div>
       </div>
 
-      {/* RSNAme+ListOfOrder */}
+     
 
       <div className="CartOrderList">
         <div className="OLRestName">
           {RestName}
         </div>
         <div className="OLItems">
-          {/* <CartListItem />
-          <CartListItem /> */}
+       
+          <OrderItem/>
+
+           {/* RSNAme+ListOfOrder */}
 
         </div>
       </div>
@@ -71,6 +73,11 @@ export const OrderDets = ({
 
       {/* List of Costs */}
 
+
+
+<div className="ListOfCost">
+  hello
+</div>
       {/* Review Section */}
 
 

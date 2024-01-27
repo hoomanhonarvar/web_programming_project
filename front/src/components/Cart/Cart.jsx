@@ -15,11 +15,13 @@ export const Cart = ({
 
 
 
-  CartItemNo = "2",
-  RestName = "Pizza Hut",
+  CartItemNo = 0,
+  RestName = "",
   DeliveryAddress = "300 Post Street San Francisco, CA",
   DeliveryFee = "0$",
-  PromoCode = "HXFWO"
+  PromoCode = "",
+  
+  dish_list={}
 
 
 
@@ -39,7 +41,7 @@ const CloseCart =()=>{
           <div className="CartTitleFirstPart">
             My Cart
           </div>
-          <div className="CartTitleSecondPart"> ( {CartItemNo} items )</div>
+          <div className="CartTitleSecondPart"> ( {Object.keys(dish_list).length} items )</div>
         </div>
         <div className="CartCloseBtn">
           <button className='BtnBgCross' onClick={CloseCart} >
@@ -72,8 +74,23 @@ const CloseCart =()=>{
           {RestName}
         </div>
         <div className="OLItems">
-          <CartListItem />
-          <CartListItem />
+        {Object.keys(dish_list).length !== 0
+      ?<>
+
+        {dish_list.map((dish,i)=>
+        <div className="OrderItem" >
+      <div className="DishQuantity">
+        {(dish+'').split(':')[0]}
+       </div>
+
+       <CartListItem DishName={(dish+'').split(':')[1]}
+           FoodQuantity= {(dish+'').split(':')[0]}
+          />
+      </div>)}
+      </>
+          :<p></p>
+      }
+          
 
         </div>
       </div>

@@ -14,7 +14,7 @@ import Promopopup from '../../components/PopUp/PromoPopUp/Promopopup'
 import AdCheck from '../../components/PopUp/AddressCheckPopUp/AdCheck'
 const PERV_REQ_URL="cart/previous/"
 const UPCOMING_REQ_URL="cart/up-coming/"
-
+const CART_URL="cart/all/"
 function Orders() {
   let base64 = require("base-64"); 
   const email=localStorage.getItem('email');
@@ -26,7 +26,20 @@ function Orders() {
 };
   const [Prev,setPrev]=useState();
   const [Upcoming,setUpcoming]=useState();
+  const [cart,setCart]=useState();
   useEffect(()=>{
+    const getCart=async()=>{
+      try{
+      const response=await axios.get(CART_URL,
+        config      
+      );
+      
+  
+      setCart(response.data);
+    }
+    catch(error){
+      console.error(error);
+    }}
 
   const getPrev=async()=>{
     try{
@@ -55,7 +68,8 @@ function Orders() {
     }
   getPrev();
   getUpcoming();
-  console.log(Prev)
+  getCart();
+  console.log(cart[0])
   },[])
 
   return (
@@ -132,8 +146,14 @@ function Orders() {
       {/* <Promopopup /> */}
       <AdCheck />
       <OrderDets />
-      <Cart/>
-            <div id='mavi' className='OverLay'><Cart/></div>
+      {cart[0]!==undefined
+      ?<Cart   RestName={cart[0].rest_name}
+      PromoCode={cart[0].PromoCode}
+      dish_list={cart[0].dish_cart}/>
+      :<Cart/>
+      }
+      
+            <div id='mavi' className='OverLay'></div>
 
     </div>
   )
