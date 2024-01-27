@@ -35,7 +35,16 @@ function Orders() {
       );
       
   
-      setCart(response.data);
+      setCart(response.data[0]);
+      console.log(response)
+      console.log(response.data[0])
+      console.log(response.data[0])
+      console.log(response.data[0])
+      console.log(response.data[0])
+      console.log(response.data[0])
+      console.log(response.data[0])
+
+
     }
     catch(error){
       console.error(error);
@@ -69,7 +78,7 @@ function Orders() {
   getPrev();
   getUpcoming();
   getCart();
-  console.log(cart[0])
+  // console.log(cart[0])
   },[])
 
   return (
@@ -146,10 +155,12 @@ function Orders() {
       {/* <Promopopup /> */}
       <AdCheck />
       <OrderDets />
-      {cart[0]!==undefined
-      ?<Cart   RestName={cart[0].rest_name}
-      PromoCode={cart[0].PromoCode}
-      dish_list={cart[0].dish_cart}/>
+      {cart!==undefined
+      ?<Cart   RestName={cart.rest_name}
+      PromoCode={cart.PromoCode}
+      dish_list={cart.dish_cart}
+      dish_id={cart.id}
+      />
       :<Cart/>
       }
       

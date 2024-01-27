@@ -9,7 +9,8 @@ OPTION=(
     ('F','finish'),
     ('C','cancel'),
     ('N','Not_started'),
-    ('D','doing')
+    ('D','doing'),
+    ('M','manager')
 )
 class cart (models.Model):
     owner=models.ForeignKey(to=User,null=False,on_delete=models.CASCADE,default="")

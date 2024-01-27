@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from rest_framework.generics import ListCreateAPIView, ListAPIView, RetrieveUpdateDestroyAPIView, GenericAPIView
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.generics import ListCreateAPIView, ListAPIView, RetrieveUpdateDestroyAPIView, GenericAPIView, \
+    UpdateAPIView
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly,AllowAny
 
-from .serializers import createNewCartSerializer,Upcoming_orders_list_Serializer,Previous_orders_list_Serializer,CartListSerializer
+from .serializers import createNewCartSerializer,Upcoming_orders_list_Serializer,Previous_orders_list_Serializer,CartListSerializer,CartUpdateListSerializer
 from .models import cart
 from rest_framework import permissions
 from django.db.models import Q
@@ -61,7 +62,7 @@ class Previous_orders_list_APIView(ListAPIView):
 class CartDetail(RetrieveUpdateDestroyAPIView):
     serializer_class = createNewCartSerializer
     queryset = cart.objects.all()
-    permission_classes = (permissions.IsAdminUser)
+    # permission_classes = (permissions.IsAdminUser,)
     lookup_field = "id"
 
 
@@ -69,3 +70,29 @@ class CartDetail(RetrieveUpdateDestroyAPIView):
     # def get_queryset(self):
     #     return self.queryset.filter(owner=self.request.user)
 
+
+
+
+# class UpdateState(UpdateAPIView):
+#     queryset = cart.objects.all()
+#     serializer_class = CartUpdateListSerializer
+#     permission_classes = (permissions.IsAuthenticated,)
+#
+#     def update(self, request, *args, **kwargs):
+#         instance = self.get_object()
+#         instance.name = request.data.get("finish_canceled")
+#         instance.save()
+#
+#         serializer = self.get_serializer(instance)
+#         serializer.is_valid(raise_exception=True)
+#         self.perform_update(serializer)
+#
+#         return Response(serializer.data)
+
+
+
+
+class CartDetailAPIView(RetrieveUpdateDestroyAPIView):
+    serializer_class = CartUpdateListSerializer
+    queryset = cart.objects.all()
+    # permission_classes = (,)

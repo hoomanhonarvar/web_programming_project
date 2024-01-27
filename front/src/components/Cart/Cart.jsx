@@ -9,7 +9,8 @@ import BtnPrimary from '../Buttons/Primarybtns/BtnPrimary'
 import { CartListItem } from '../ListItem/CartListItem/CartListItem'
 import BtnIcon from '../Buttons/IconBtns/BtnIcon'
 import plus from '../../Pics/Icons/Icons/24px/Plus.svg'
-
+import { useState,useEffect } from 'react'
+import axios from '../../api/axios'
 
 export const Cart = ({
 
@@ -20,7 +21,7 @@ export const Cart = ({
   DeliveryAddress = "300 Post Street San Francisco, CA",
   DeliveryFee = "0$",
   PromoCode = "",
-  
+  dish_id=0,
   dish_list={}
 
 
@@ -32,7 +33,26 @@ const CloseCart =()=>{
   document.getElementById('mavi').style.display="none";
 
 }
-
+let base64 = require("base-64"); 
+const email=localStorage.getItem('email');
+const pwd=localStorage.getItem('pwd')
+const START_CART_URL="cart/"
+const [tmp,setTmp]=useState('N')
+const config = {
+  headers: { 'Content-Type': 'application/json' ,
+  Authorization: "Basic " + base64.encode(email + ":" + pwd),
+},credentials: 'include',
+};
+const start_cart=async()=>{
+  try{
+    setTmp('M')
+const response=axios.put(START_CART_URL+dish_id+"/",
+  JSON.stringify({finish_cancel:  tmp}),
+  config
+  )
+  console.log(response)
+  }catch(err){console.log(err)}
+} 
   return (
     <div className='CartMainContainer' id='Cart'>
       {/* Title & CloseBtn */}
@@ -138,7 +158,7 @@ const CloseCart =()=>{
       </div>
 
       {/* CheckOut */}
-      <div className="CartCheckOutSection">
+      <div className="CartCheckOutSection" onClick={start_cart}>
         <BtnPrimary title="Checkout" />
       </div>
     </div >

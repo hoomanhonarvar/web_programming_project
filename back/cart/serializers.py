@@ -6,7 +6,7 @@ from address.models import user_add
 
 from dish.serializers import list_of_dishes_Serializer
 class CartListSerializer(serializers.ModelSerializer):
-    dish_cart= serializers.StringRelatedField(many=True,read_only=True)
+    dish_cart= serializers.StringRelatedField(many=True)
     class Meta:
         model=cart
         fields=['id','rest_id','rest_name','add_id','total','finish_cancel','time','date','distance','Estimated_arrival','promo_code','On_the_way','Food_is_ready','dish_cart']
@@ -31,3 +31,12 @@ class Previous_orders_list_Serializer(serializers.ModelSerializer):
     class Meta:
         model=cart
         fields=('id','time','date','finish_cancel','rest_name','dish_cart')
+
+
+
+class CartUpdateListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = cart
+        fields=['finish_cancel',]
+
+

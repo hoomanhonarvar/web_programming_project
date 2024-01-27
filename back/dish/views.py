@@ -76,9 +76,9 @@ class add_dish_to_cart_APIView(GenericAPIView):
                 dish_restaurant=dish.objects.get(id=dish_id)
                 if (not_started_cart.rest_id!=dish_restaurant.rest_id):
                     return Response({'error':'you should order just from one restaurant '},status=status.HTTP_400_BAD_REQUEST)
-                if cart_dish_table.objects.filter(Q(dish_id=dish.objects.get(id=dish_id)) and Q( cart_id=not_started_cart)).exists():
+                if cart_dish_table.objects.filter(Q(dish_id_id=dish.objects.get(id=dish_id).id) and Q( cart_id_id=not_started_cart.id)).exists():
 
-                    goal_cart=cart_dish_table.objects.get(Q(dish_id=dish.objects.get(id=dish_id)) and Q( cart_id=not_started_cart))
+                    goal_cart=cart_dish_table.objects.get(Q(dish_id_id=dish.objects.get(id=dish_id).id) and Q( cart_id_id=not_started_cart.id))
 
                     goal_cart.number+=1
                     goal_cart.save()
@@ -86,10 +86,11 @@ class add_dish_to_cart_APIView(GenericAPIView):
                     not_started_cart.save()
 
                 else:
-                     new_dish=cart_dish_table(cart_id=not_started_cart,dish_id=dish.objects.get(id=dish_id),number=1)
-                     not_started_cart.total += dish.objects.get(id=dish_id).fee
-                     not_started_cart.save()
-                     new_dish.save()
+                    new_dish=cart_dish_table.save(cart_id_id=not_started_cart.id,dish_id_id=dish.objects.get(id=dish_id).id,number=1)
+
+                    new_dish.save()
+                    not_started_cart.total += dish.objects.get(id=dish_id).fee
+                    not_started_cart.save()
 
             else:
                 ##adding a cart
@@ -100,11 +101,11 @@ class add_dish_to_cart_APIView(GenericAPIView):
                         new_cart.total=dish.objects.get(id=dish_id).fee + restaurant.objects.get(id=new_cart.rest_id.id).delivery
                         new_cart.save()
                         not_started_cart = user_carts.get(finish_cancel='N')
-                        new_dish = cart_dish_table(cart_id=not_started_cart, dish_id=dish.objects.get(id=dish_id), number=1)
+                        new_dish = cart_dish_table(cart_id_id=not_started_cart.id, dish_id_id=dish.objects.get(id=dish_id).id, number=1)
                         new_dish.save()
-                        # print(fee+dish.objects.get(id=dish_id).fee)
-                        # not_started_cart.total += dish.objects.get(id=dish_id).fee+restaurant.objects.get(id=new_cart.rest_id.id).delivery
-                        # not_started_cart.save()
+                        print("fee"+dish.objects.get(id=dish_id).fee)
+                        not_started_cart.total += dish.objects.get(id=dish_id).fee+restaurant.objects.get(id=new_cart.rest_id.id).delivery
+                        not_started_cart.save()
                     except:
                         return Response({'error': "error"},
                                         status=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -129,9 +130,9 @@ class del_dish_from_cart_APIView(GenericAPIView):
             if user_carts.filter(finish_cancel='N').exists():
                 not_started_cart = user_carts.get(finish_cancel='N')
 
-                if cart_dish_table.objects.filter(Q(dish_id=dish_id) and Q(cart_id=not_started_cart.id)):
+                if cart_dish_table.objects.filter(Q(dish_id_id=dish_id) and Q(cart_id_id=not_started_cart.id)):
 
-                    goal_cart = cart_dish_table.objects.get(Q(dish_id=dish_id) and Q(cart_id=not_started_cart.id))
+                    goal_cart = cart_dish_table.objects.get(Q(dish_id_id=dish_id) and Q(cart_id_id=not_started_cart.id))
                     if(goal_cart.number==1):
                          cart_dish_table.delete(goal_cart)
 

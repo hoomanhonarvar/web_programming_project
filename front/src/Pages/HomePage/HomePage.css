@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   height: 100%;
+  overflow: hidden;
 }
 
 .MainHomeScreen {
@@ -20,7 +21,7 @@
   margin: 12px;
 }
 
-.Featured-restaurants-title{
+.Featured-restaurants-title {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -52,15 +53,50 @@
   justify-content: space-between;
 }
 
-.RestaurantCols{
-  display: flex ;
+.RestaurantCols {
+  display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+
   margin: 16px 0px;
 }
 
-.FeaturedRst{
+.FeaturedRst {
   display: flex;
   flex-direction: column;
 }
 
+.OverLay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.16);
+  position: fixed;
+  z-index: 3;
+  display: none;
+  overflow: hidden;
+}
+
+@media screen and (max-width : 768px) {
+
+  .MainHomeScreen {
+    overflow: hidden;
+  }
+
+  .RestaurantCols {
+    flex-direction: row;
+    margin: 20px 0px;
+
+  }
+
+  .FeaturedRst {
+    flex-direction: row;
+    overflow: scroll;
+  }
+
+  .Cards {
+    overflow: scroll;
+  }
+
+  .cards-category-card a {
+    margin: 0px 16px;
+  }
+}

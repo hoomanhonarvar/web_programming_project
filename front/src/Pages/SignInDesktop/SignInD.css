@@ -1,0 +1,26 @@
+@media screen and (max-width : 768px) {
+  .main-signup {
+    flex-direction: column;
+    margin: 20px 0px;
+    overflow-x: hidden;
+    justify-content: start;
+
+  }
+
+  .signupimg img {
+    display: none;
+  }
+
+  .signupimg {
+
+    width: 800px;
+    background-image: url(/src/Pics/Image2.png);
+    background-size: cover;
+    background-position: center center;
+      margin-bottom: 24px ;
+
+
+  }
+
+
+}

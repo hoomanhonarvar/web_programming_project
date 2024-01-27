@@ -4,9 +4,9 @@ import jwt
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.generics import ListAPIView , RetrieveUpdateDestroyAPIView,UpdateAPIView
 from django.shortcuts import get_object_or_404
-from .serializers import List_UserSerializer,RegisterSerializer,EmailVerificationSerializer,LoginSerializer,ResendEmailSerializer,RequestPasswordResetEmailSerializer,SetNewPasswordSerializer,LogoutSerializer,userUpdateSerializer
+from .serializers import List_UserSerializer,RegisterSerializer,EmailVerificationSerializer,LoginSerializer,ResendEmailSerializer,RequestPasswordResetEmailSerializer,SetNewPasswordSerializer,LogoutSerializer,UserUpdateListSerializer
 from .models import User
-from rest_framework.permissions import IsAdminUser,IsAuthenticated
+from rest_framework.permissions import IsAdminUser, IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework import status,views
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
@@ -62,21 +62,21 @@ class userUpdate(UpdateAPIView):
         instance.save()
         return instance
 
-class UpdateName(UpdateAPIView):
-    queryset = User.object.all()
-    serializer_class = userUpdateSerializer
-    permission_classes = (IsAuthenticated,)
-    def update(self, request, *args, **kwargs):
-        instance = self.get_object()
-        instance.email = request.data.get("email")
-        instance.username=request.data.get("username")
-        instance.phone_number=request.data.get("phone_number")
-        print(request.data.get("phone_number"))
-        instance.save()
-        serializer = self.get_serializer(instance)
-        serializer.is_valid(raise_exception=True)
-        self.perform_update(serializer)
-        return Response(serializer.data)
+# class UpdateName(UpdateAPIView):
+#     queryset = User.object.all()
+#     serializer_class = userUpdateSerializer
+#     permission_classes = (IsAuthenticated,)
+#     def update(self, request, *args, **kwargs):
+#         instance = self.get_object()
+#         instance.email = request.data.get("email")
+#         instance.username=request.data.get("username")
+#         instance.phone_number=request.data.get("phone_number")
+#         print(request.data.get("phone_number"))
+#         instance.save()
+#         serializer = self.get_serializer(instance)
+#         serializer.is_valid(raise_exception=True)
+#         self.perform_update(serializer)
+#         return Response(serializer.data)
 
 
 class RegisterView(GenericAPIView):
@@ -236,3 +236,12 @@ class LogoutAPIView(GenericAPIView):
         serializer.save()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+
+
+class UserDetailAPIView(RetrieveUpdateDestroyAPIView):
+    serializer_class =UserUpdateListSerializer
+    queryset = User.object.all()
+    permission_classes = (IsAuthenticatedOrReadOnly,)
