@@ -13,10 +13,14 @@ import Card from '../../Pics/Icons/Icons/Card.svg'
 import Support from '../../Pics/Icons/Icons/Support.svg'
 import newProfile from '../../Pics/Icons/Icons/Split-order.svg'
 import Money from '../../Pics/Icons/Icons/Money.svg'
+import Cart from '../../components/Cart/Cart'
 import SildeBar from '../../components/SildeBar/SildeBar'
 function Settings() {
   return (
     <div className='main'>
+                <div className='OverLay' id='mavi'></div>
+                <Cart/>
+
             <SildeBar/>
 
     <div className='SettingsPage'>

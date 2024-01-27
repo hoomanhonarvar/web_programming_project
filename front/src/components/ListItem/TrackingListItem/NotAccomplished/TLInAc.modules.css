@@ -1,0 +1,54 @@
+.AcItem .CheckedBoxnac {
+  height: 32px;
+  width: 32px;
+  background-color: #F7F7F7;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  margin-right: 16px ;
+}
+
+
+
+.AcItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 12px 0px;
+}
+
+
+.AcItem .ItemContent {
+  color: var(--colorstextdark-182135100);
+  font-family: var(--text-h4-bold-font-family);
+  font-size: var(--text-h4-bold-font-size);
+  font-style: var(--text-h4-bold-font-style);
+  font-weight: var(--text-h4-bold-font-weight);
+
+}
+
+
+.AcItem .ItemAcTime {
+  color: var(--colorstextdark-626264100);
+  font-family: var(--text-body-normal-regular-font-family);
+  font-size: var(--text-body-normal-regular-font-size);
+  font-style: var(--text-body-normal-regular-font-style);
+  font-weight: var(--text-body-normal-regular-font-weight);
+
+
+ 
+}
+
+
+
+.BoxAndItemContent{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width:75%;
+
+}

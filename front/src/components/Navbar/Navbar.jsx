@@ -9,7 +9,13 @@ import BtnIcon from '../Buttons/IconBtns/BtnIcon'
 import filter from '../../Pics/Icons/Icons/20px/Filter.svg'
 import ShoppingCart from '../../Pics/Icons/Icons/20px/Shopping-cart.svg'
 import SearchField from '../SearchField/SearchField'
+import Cart from '../Cart/Cart'
+import { useState } from 'react'
 function Navbar() {
+const OpenShoppingCart =()=>{
+  document.getElementById('Cart').style.display="flex";
+  document.getElementById('mavi').style.display="block";
+}
 
   return (
     <div className='NavBarDesktop'>
@@ -28,18 +34,19 @@ function Navbar() {
         Icon={Coupon}
       />
       {/* Search field */}
-      <SearchField/>
+      <SearchField />
       {/* Filter */}
       <BtnIcon
         Icon={filter}
       />
 
       {/* Cart */}
+      <div className="ShoppingCart" onClick={OpenShoppingCart}>
+        <BtnIcon Icon={ShoppingCart}  />
+      </div>
 
-      <BtnIcon
-        Icon={ShoppingCart}
-        bgColor='#FB6D3A'
-      />
+
+
     </div>
   )
 }

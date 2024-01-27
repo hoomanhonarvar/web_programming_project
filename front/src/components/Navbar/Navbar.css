@@ -4,3 +4,13 @@
   align-items: center;
   flex-direction: row;
 }
+
+
+.OverLay{
+  width: 100%;
+  height: 200%;
+  background-color: rgba(0, 0, 0, 0.16);
+  position: fixed;
+  z-index: 3;
+  overflow: hidden;
+}

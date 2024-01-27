@@ -4,6 +4,7 @@ import PropTypes from "prop-types"
 import RestLogoPath from '../../../Pics/Logo/Cards/RsLogo.svg'
 import { Link } from 'react-router-dom'
 import RestCoverPhoto from '../../../Pics/BannerPhotos/Cover.png'
+import HeartButton from '../../Buttons/HeartButton/HeartButton'
 
 export const RestBanner = ({
 
@@ -12,18 +13,14 @@ export const RestBanner = ({
 
 }) => {
   return (
-
-    <div className='RestaurantBanner'>
-      <div className="box">
-        <div className="banner">
-          <div className="overlap-group">
-            <img className="image" alt="Image" src={RestCover} />
-            <div className="RestLogoMain">
-              <img className="logo" alt="Logo" src={RestLogo} />
-
-            </div>
-
+    <div className="box">
+      <div className="banner">
+        <div className="overlap-group">
+          <div className="CoverImage">
+          <HeartButton className="icons-icon-fill-px" />
           </div>
+          <img className="RestLogoMain" alt="Logo" src={RestLogo} />
+         
         </div>
       </div>
     </div>

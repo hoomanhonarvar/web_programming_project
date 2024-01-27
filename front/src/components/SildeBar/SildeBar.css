@@ -19,3 +19,14 @@
   display: flex;
   flex-direction: column;
 }
+
+
+
+.OverLay{
+  width: 200%;
+  height: 200%;
+  background-color: rgba(0, 0, 0, 0.16);
+  position: fixed;
+  z-index: 3;
+  overflow: hidden;
+}

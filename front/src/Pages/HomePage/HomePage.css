@@ -55,7 +55,7 @@
 .RestaurantCols{
   display: flex ;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin: 16px 0px;
 }
 
@@ -63,3 +63,4 @@
   display: flex;
   flex-direction: column;
 }
+

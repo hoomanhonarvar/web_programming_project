@@ -8,6 +8,7 @@ import RestFav from '../../components/Favs/RestFav/RestFav'
 import DishFav from '../../components/Favs/DishFav/DishFav'
 import SildeBar from '../../components/SildeBar/SildeBar'
 import Silverware from './../../Pics/Icons/Icons/16px/Silverware.svg'
+import Cart from '../../components/Cart/Cart'
 import RestaurantIcon from './../../Pics/Icons/Icons/16px/Restaurant.svg'
 import { Link } from 'react-router-dom'
 import axios from '../../api/axios'
@@ -83,6 +84,9 @@ function Favourite() {
   }
 
   return (<div className='main_fav'>
+    <div className='OverLay' id='mavi'></div>
+    <Cart/>
+
     <SildeBar/>
     <div className='FavouritePage'>
       {/* sildeBar */}

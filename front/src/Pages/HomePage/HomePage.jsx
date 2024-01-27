@@ -16,7 +16,7 @@ import FoodCards from '../../components/Cards/FoodCards/FoodCards'
 import SildeBar from '../../components/SildeBar/SildeBar'
 import useAxiosPrivate from "./../../hooks/useAxiosPrivate"
 import axios from '../../api/axios'
-
+import Cart from '../../components/Cart/Cart'
   
 
 function HomePage() {
@@ -47,6 +47,8 @@ getDishes();
 
   return (
     <div className='HomePage'>
+          <div className='OverLay' id='mavi'></div>
+<Cart/>
       <SildeBar/>
       <div className="MainHomeScreen">
         {/* NavBarDesktop */}
@@ -202,6 +204,7 @@ getDishes();
 
 
       </div>
+
     </div>
   )
 }

@@ -34,7 +34,7 @@ const ROLES = {
 
 function App() {
   return (
-    
+    <>
     <Routes>
         
         
@@ -46,15 +46,14 @@ function App() {
         <Route path="sign-up" element={ <SignUpDesktop/> } />
         <Route path="forgetpass" element={ <ForgetPass/> } />
         <Route path="unauthorized" element={<Unauthorized />} />
-        <Route path="restaurant" element={ <Restaurant/> } />
-        <Route path="fastDelivery" element={ <FastDelivery/> } />
-        <Route path="popular" element={ <Popular/> } />
-        <Route path="/" element={ <HomePage/> } />
-        <Route path="/explore" element={ <HomePage/> } />
-
         <Route path="setNewpass" element={ <SetNewPass/> } />
 
 
+        <Route path="restaurant" element={ <Restaurant/> } />
+          <Route path="fastDelivery" element={ <FastDelivery/> } />
+        <Route path="popular" element={ <Popular/> } />
+        <Route path="/" element={ <HomePage/> } />
+        <Route path="/explore" element={ <HomePage/> } />
 
 
 
@@ -80,8 +79,10 @@ function App() {
         </Route>
         {/* catch all */}
 
-
+      
       </Routes>
+
+      </>
   );
 }
 

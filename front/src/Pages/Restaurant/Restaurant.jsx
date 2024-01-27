@@ -5,6 +5,7 @@ import RestInfoBox from '../../components/RestaurantInfo/RestInfoBox';
 import RestBanner from '../../components/Banners/RestaruntBanner/RestBanner'
 import SildeBar from '../../components/SildeBar/SildeBar';
 import React,{ useState,useEffect } from 'react';
+import Cart from '../../components/Cart/Cart';
 import axios from '../../api/axios';
 import { useSearchParams } from 'react-router-dom';
 import FoodCards from '../../components/Cards/FoodCards/FoodCards';
@@ -61,6 +62,9 @@ function RestaurantPage(){
 
   return (
     <div className='Rest_side'>
+                <div className='OverLay' id='mavi'></div>
+                <Cart/>
+
             <SildeBar/>
 
     <div className='RestCardMainCont'>

@@ -7,6 +7,7 @@ import UpcomingOrderCard from '../../components/Cards/OrderCards/UpcomingOrders/
 import PreviousOrder from '../../components/Cards/OrderCards/PreviousOrders/PreviousOrder'
 import {useState,useEffect}from 'react';
 import axios from '../../api/axios'
+import Cart from '../../components/Cart/Cart'
 const PERV_REQ_URL="cart/previous/"
 const UPCOMING_REQ_URL="cart/up-coming/"
 
@@ -28,14 +29,7 @@ function Orders() {
     const response=await axios.get(PERV_REQ_URL,
       config      
     );
-    console.log("response")
-    console.log(response);
-    console.log(response);
-    console.log(response);
-    console.log(response);
-    console.log(response);
-    console.log(response);
-    console.log(response);
+    
 
     setPrev(response.data);
   }
@@ -57,12 +51,14 @@ function Orders() {
     }
   getPrev();
   getUpcoming();
-  console.log(Prev);
-  console.log(Upcoming);
   },[])
 
   return (
     <div className='OrdersPage'>
+      <div className='OverLay'><Cart/></div>
+      <Cart/>
+
+
       <SildeBar/>
 
       <div className="MainOrderScreen">
