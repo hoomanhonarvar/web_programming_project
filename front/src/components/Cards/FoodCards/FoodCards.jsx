@@ -22,7 +22,6 @@ export const FoodCards = ({
   FoodPrepDuration = '15 - 25 min',
   FoodDelivery = '0.99$ Delivery',
   FoodLink = 'Chocolate Cheesecake',
-  Quantity = 0,
   DishId
 
 }) => {let base64 = require("base-64"); 
@@ -30,7 +29,8 @@ const email=localStorage.getItem('email');
 const pwd=localStorage.getItem('pwd')
 const LIKE_DISH_URL="/dish/like/"
 const LIKE_DISLIKE_URL="/dish/likedislike/"
-
+const ADD_TO_CART_URL="/dish/add-to-cart/"
+const DEL_FROM_CART_URL="/dish/del-from-cart/"
 const [red_heart,Set_read_heart]=useState(true);
 
 
@@ -41,6 +41,31 @@ const config = {
   Authorization: "Basic " + base64.encode(email + ":" + pwd),
 },credentials: 'include',
 };
+
+const addToCart=async()=>{
+  try{
+    const response=await axios.get(ADD_TO_CART_URL+DishId+"/",
+    config      
+    
+  );
+  console.log(response)
+  }catch(err){
+    console.error(err)
+  }
+}
+const delFromCart=async()=>{
+  try{
+    const response=await axios.get(DEL_FROM_CART_URL+DishId+"/",
+    config      
+  );
+  console.log(response)
+
+  }catch(err){
+    console.error(err)
+  }
+}
+
+
 const like=async()=>{
   try{
   const response=await axios.get(LIKE_DISH_URL+DishId+"/",
@@ -123,13 +148,11 @@ useEffect(()=>{
 
               <div className="InfoRowFood">
                 <div className="Counter">
-                  <button className="CounterMinus">
+                  <button className="CounterMinus" onClick={delFromCart} >
                     <img src={Minus} alt="Minus" />
                   </button>
-                  <div className="Quantity">
-                    {Quantity}
-                  </div>
-                  <button className="CounterPlus">
+                  
+                  <button className="CounterPlus" onClick={addToCart}>
                     <img src={Add} alt="Add" />
                   </button>
 

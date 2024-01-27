@@ -40,6 +40,7 @@
   background-color: transparent;
   border: none;
   margin: 0px 8px;
+  cursor: pointer;
 }
 
 .Counter .Quantity {
