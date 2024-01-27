@@ -73,7 +73,9 @@ class add_dish_to_cart_APIView(GenericAPIView):
             user_carts=cart.objects.filter(owner=request.user)
             if user_carts.filter(finish_cancel='N').exists():
                 not_started_cart=user_carts.get(finish_cancel='N')
-
+                dish_restaurant=dish.objects.get(id=dish_id)
+                if (not_started_cart.rest_id!=dish_restaurant.rest_id):
+                    return Response({'error':'you should order just from one restaurant '},status=status.HTTP_400_BAD_REQUEST)
                 if cart_dish_table.objects.filter(Q(dish_id=dish.objects.get(id=dish_id)) and Q( cart_id=not_started_cart)).exists():
 
                     goal_cart=cart_dish_table.objects.get(Q(dish_id=dish.objects.get(id=dish_id)) and Q( cart_id=not_started_cart))
