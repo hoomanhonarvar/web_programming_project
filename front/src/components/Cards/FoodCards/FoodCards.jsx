@@ -1,5 +1,6 @@
-import React from 'react'
 import PropTypes from "prop-types"
+import React, { useEffect } from 'react'
+
 import './FoodCards.modules.css'
 import FoodPhoto from '../../../Pics/FoodPhotos/ChocolateCake.png'
 import Dine from '../../../Pics/Icons/Icons/16px/Silverware.svg'
@@ -10,6 +11,8 @@ import { Link } from 'react-router-dom'
 import Add from '../../../Pics/Icons/Icons/16px/add-circle.svg'
 import Minus from '../../../Pics/Icons/Icons/16px/minus-cirlce.svg'
 import HeartButton from '../../Buttons/HeartButton/HeartButton'
+import axios from '../../../api/axios'
+import { useState } from 'react'
 export const FoodCards = ({
   RestDist = '0,3Km',
   FoodRate = '4,3',
@@ -20,8 +23,62 @@ export const FoodCards = ({
   FoodDelivery = '0.99$ Delivery',
   FoodLink = 'Chocolate Cheesecake',
   Quantity = 0,
+  DishId
 
-}) => {
+}) => {let base64 = require("base-64"); 
+const email=localStorage.getItem('email');
+const pwd=localStorage.getItem('pwd')
+const LIKE_DISH_URL="/dish/like/"
+const LIKE_DISLIKE_URL="/dish/likedislike/"
+
+const [red_heart,Set_read_heart]=useState(true);
+
+
+
+
+const config = {
+  headers: { 'Content-Type': 'application/json' ,
+  Authorization: "Basic " + base64.encode(email + ":" + pwd),
+},credentials: 'include',
+};
+const like=async()=>{
+  try{
+  const response=await axios.get(LIKE_DISH_URL+DishId+"/",
+    config      
+    
+  );
+  
+  Set_read_heart(!red_heart);
+  // console.log(red_heart)
+}
+catch(error){
+  console.error(error);
+}}
+useEffect(()=>{
+
+  const like_dislike=async()=>{
+    try{
+
+    const response=await axios.get(LIKE_DISLIKE_URL+DishId+"/",
+      config      
+      
+    );
+    Set_read_heart(true)
+   }catch(err){
+    Set_read_heart(false)
+   }}
+
+   like_dislike();
+   console.log(red_heart)
+
+   
+
+   
+})
+  
+
+
+
   return (
     <div className='FoodCardMainContainer'>
         <div className="FoodPhoto">
@@ -35,8 +92,8 @@ export const FoodCards = ({
                   <h3 className="RSname">{FoodName}</h3>
                 </div>
               </div>
-              <div className="InfoRow">
-              <HeartButton className="likeBtn" />
+              <div className="InfoRow" onClick={like}>
+              <HeartButton className="likeBtn" red={red_heart}/>
 
                 <DBadge title={FoodDelivery} />
               </div>

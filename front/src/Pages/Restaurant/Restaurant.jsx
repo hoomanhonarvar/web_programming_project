@@ -56,8 +56,7 @@ function RestaurantPage(){
   // },[])
 
 
-
-
+  
 
   return (
     <div className='Rest_side'>
@@ -93,7 +92,7 @@ function RestaurantPage(){
 
 
         {/* FoodCards Rows */}
-        {dish?.length
+        {dish!==undefined
             ? <div className="FeaturedRst">
             <div className="RestaurantCols">
               {dish.slice(0,3).map((dish,i)=>
@@ -105,7 +104,7 @@ function RestaurantPage(){
                   FoodLink = 'Chocolate Cheesecake'
                   FoodDescription={dish?.description}
                   FoodRest_id={dish?.rest_id}
-                  FoodId={dish?.id}
+                  DishId={dish?.id}
                   />)}
                   
             </div>
@@ -119,7 +118,7 @@ function RestaurantPage(){
                   FoodLink = 'Chocolate Cheesecake'
                   FoodDescription={dish?.description}
                   FoodRest_id={dish?.rest_id}
-                  FoodId={dish?.id}
+                  DishId={dish?.id}
                   />)}
                   
             </div>
@@ -133,7 +132,7 @@ function RestaurantPage(){
                   FoodLink = 'Chocolate Cheesecake'
                   FoodDescription={dish?.description}
                   FoodRest_id={dish?.rest_id}
-                  FoodId={dish?.id}
+                  DishId={dish?.id}
                   />)}
                   
             </div>
@@ -147,7 +146,7 @@ function RestaurantPage(){
                   FoodLink = 'Chocolate Cheesecake'
                   FoodDescription={dish?.description}
                   FoodRest_id={dish?.rest_id}
-                  FoodId={dish?.id}
+                  DishId={dish?.id}
                   />)}
                   
             </div>

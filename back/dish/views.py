@@ -40,6 +40,19 @@ class like_dishAPIView(GenericAPIView):
                 dish_item.fav.add(request.user)
             return Response(status=status.HTTP_204_NO_CONTENT)
 
+class like_dislike(GenericAPIView):
+    permission_classes = (IsAuthenticated,)
+    def get(self, request, pk):
+        dish_id = pk
+        if not dish.objects.filter(id=dish_id).exists():
+            return Response({'error': 'this id dish not exists'}, status=status.HTTP_404_NOT_FOUND)
+        else:
+            dish_item = dish.objects.get(id=dish_id)
+            if dish_item.fav.filter(id=request.user.id).exists():
+               return Response(status=status.HTTP_200_OK)
+            else:
+                return Response(status=status.HTTP_404_NOT_FOUND)
+
 class favourite_dishAPIView(ListAPIView):
     serializer_class = list_of_dishes_Serializer
     permission_classes = (IsAuthenticatedOrReadOnly,)

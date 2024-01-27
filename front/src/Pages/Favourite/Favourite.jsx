@@ -67,8 +67,8 @@ function Favourite() {
 
   getRestaurants();
   getDishes();
-  console.log(dishes)
-  console.log(rest)
+  // console.log(dishes)
+  // console.log(rest)
 
   },[])
 
@@ -134,7 +134,7 @@ function Favourite() {
         <div className="FavContainer">
 
           {display
-          ?(<>{dishes!==undefined
+          ?(<>{rest!==undefined
             ?(<div className="RestaurantCols">
             {rest.slice(0,3).map((res,i)=>
                 <RestaurantCardMd  key={i} RestName={res?.name}
@@ -147,9 +147,9 @@ function Favourite() {
             :<p>nothing to show</p>
           }</>)
           :(<>
-            {rest!==undefined
+            {dishes!==undefined
               ?(<div className="RestaurantCols">
-              {dishes.slice(0,3).map((dish,i)=>
+              {dishes.map((dish,i)=>
                   <FoodCards  key={i} 
                   FoodRate = {String(dish?.rate)}
                   // FoodPhotoPath = {dish?.image}
@@ -158,8 +158,9 @@ function Favourite() {
                   FoodLink = 'Chocolate Cheesecake'
                   FoodDescription={dish?.description}
                   FoodRest_id={dish?.rest_id}
-                  FoodId={dish?.id}
-                  />)}
+                  DishId={dish?.id}
+                  />)
+                  }
             </div>)
               :<p>nothing to show</p>
             }</>
