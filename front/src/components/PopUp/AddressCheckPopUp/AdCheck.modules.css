@@ -1,0 +1,19 @@
+.mainAdcheck {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30%;
+  top: 10%;
+  left: 40%;
+  position: fixed;
+  border-radius: 16px;
+  background: var(--colors-light-ffffff-100, #FFF);
+  padding: 32px;
+  display: none;
+  /* border: 1px solid #000; */
+}
+
+.mainPromoPopUp .CartUpper {
+  margin-bottom: 0px !important;
+}
+

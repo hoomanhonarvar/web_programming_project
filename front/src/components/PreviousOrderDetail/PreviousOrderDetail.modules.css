@@ -10,6 +10,7 @@
   right: 0;
   z-index: 10;
   width: 400px;
+  display: none;
 
 }
 
@@ -132,8 +133,13 @@
 }
 
 
-.OLItems {
+.POLItems {
   display: flex;
   flex-direction: column;
 
+}
+
+
+.POLItems >.OrderItem> .DishQuantity{
+  background-color: #F7F7F7;
 }

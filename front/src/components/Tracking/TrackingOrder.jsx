@@ -13,12 +13,15 @@ export const TrackingOrder = ({
   EsTime = "35",
   Distance = "3.6",
   FoodPreprationTime = "12:32 am",
-  FoodDistributionTime = "12:49 am"
+  FoodDistributionTime = "12:49 am",
+  Food_Is_Ready=false,
+  On_the_way=false
+
 }) => {
 
   const CloseTrack = () => {
     document.getElementById('Track').style.display = "none";
-    document.getElementById('MeowMeow').style.display = "none";
+    document.getElementById('mavi').style.display = "none";
   }
 
   return (
@@ -73,8 +76,17 @@ export const TrackingOrder = ({
         {/* CheckList */}
         <div className="CheckList">
           <TLInAc />
-          <TLIAc />
-          <TLIAc />
+
+          {Food_Is_Ready
+          ? <TLIAc ItemContent="Food is ready" />
+          : <TLInAc ItemContent="Food is ready"/>
+          }
+          {On_the_way
+          ?<TLIAc ItemContent="On the way"/>
+          :<TLIAc ItemContent="On the way" />
+          }
+          
+          
         </div>
 
 

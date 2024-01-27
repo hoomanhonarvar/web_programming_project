@@ -12,14 +12,23 @@ import MailBG from '../../../Pics/Icons/Icons/Bg-Icons/MailBgIcon.svg'
 import PhoneBG from '../../../Pics/Icons/Icons/Bg-Icons/PhoneBgIcon.svg'
 import avatar from '../../../Pics/Avatar/Image.svg'
 import BtnSecondary from '../../Buttons/Secondarybtns/BtnSecondary'
+const UPDATE_URL=""
 function UpdatePersonalInfo() {
-
+  let base64 = require("base-64"); 
+const email=localStorage.getItem('email');
+const pwd=localStorage.getItem('pwd')
   const CloseUpdateInfo = () => {
     document.getElementById('PInfo').style.display = "none";
     document.getElementById('mavi').style.display = "none";
   }
+  const config = {
+    headers: { 'Content-Type': 'application/json' ,
+    Authorization: "Basic " + base64.encode(email + ":" + pwd),
+  },credentials: 'include',
+  };
+  const update_info=()=>{
 
-
+  }
   return (
     <div className='PInfoContainer' id='PInfo'>
       {/* title + Icon */}

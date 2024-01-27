@@ -8,6 +8,10 @@ import PreviousOrder from '../../components/Cards/OrderCards/PreviousOrders/Prev
 import {useState,useEffect}from 'react';
 import axios from '../../api/axios'
 import Cart from '../../components/Cart/Cart'
+import TrackingOrder from '../../components/Tracking/TrackingOrder'
+import OrderDets from '../../components/PreviousOrderDetail/PreviousOrderDetail'
+import Promopopup from '../../components/PopUp/PromoPopUp/Promopopup'
+import AdCheck from '../../components/PopUp/AddressCheckPopUp/AdCheck'
 const PERV_REQ_URL="cart/previous/"
 const UPCOMING_REQ_URL="cart/up-coming/"
 
@@ -51,12 +55,11 @@ function Orders() {
     }
   getPrev();
   getUpcoming();
+  console.log(Prev)
   },[])
 
   return (
     <div className='OrdersPage'>
-      <div className='OverLay'><Cart/></div>
-      <Cart/>
 
 
       <SildeBar/>
@@ -125,6 +128,12 @@ function Orders() {
 
 
       </div>
+      <TrackingOrder />
+      {/* <Promopopup /> */}
+      <AdCheck />
+      <OrderDets />
+      <Cart/>
+            <div id='mavi' className='OverLay'><Cart/></div>
 
     </div>
   )

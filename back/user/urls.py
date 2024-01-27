@@ -2,10 +2,10 @@ from django.contrib import admin
 from django.urls import path,include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from .views import ListOfUsersView,userDetail,RegisterView,VerifyEmail,LoginAPIView,ResendEmailVarification,PasswordTokenCheckAPI,RequestPasswordResetEmail,SetNewPasswordAPIView,LogoutAPIView
+from .views import ListOfUsersView,userDetail,RegisterView,VerifyEmail,LoginAPIView,ResendEmailVarification,PasswordTokenCheckAPI,RequestPasswordResetEmail,SetNewPasswordAPIView,LogoutAPIView,userUpdate
 urlpatterns = [
     path('all/',ListOfUsersView.as_view(),name="list_of_users"),
-    path("<int:pk>/",userDetail.as_view(),name="get_user"),
+    path("",userUpdate.as_view(),name="get_user"),
     path('register/',RegisterView.as_view(),name="register"),
     path('email-verify/', VerifyEmail.as_view(), name="email-verify"),
     path('Login/', LoginAPIView.as_view(), name="Login"),

@@ -19,7 +19,7 @@ export const OrderDets = ({
 
   const CloseDets = () => {
     document.getElementById('OrderDets').style.display = "none";
-    document.getElementById('MeowMeow').style.display = "none";
+    document.getElementById('mavi').style.display = "none";
   }
 
   return (

@@ -16,6 +16,12 @@ export const PreviousOrder = ({
   dish_list={}
 
 }) => {
+  const OpenDets =()=>{
+
+    document.getElementById('OrderDets').style.display="flex";
+    document.getElementById('mavi').style.display="Block";
+    
+    }
   return (
     <div className='MainPreviousOrderCard'>
       {/* Name + Badge */}
@@ -56,8 +62,14 @@ export const PreviousOrder = ({
 
 
       <div className="POrderBtns">
-        <BtnPrimaryOrange title="Detail" />
-        <BtnSecondaryOrange title="Get help" />
+        <div className="PODetsBtn" onClick={OpenDets}>
+          <BtnPrimaryOrange title="Detail" />
+        </div>
+
+        <div className="POgethelpBtn">
+          <BtnSecondaryOrange title="Get help" />
+        </div>
+
       </div>
 
     </div >

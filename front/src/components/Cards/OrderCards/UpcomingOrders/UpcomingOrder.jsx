@@ -11,6 +11,13 @@ export const UpcomingOrderCard = ({
 
 
 }) => {
+
+
+
+  const OpenTrack = () => {
+    document.getElementById('mavi').style.display = "block";
+    document.getElementById('Track').style.display = "flex";
+  }
   return (
     <div className='MainUpcomingOrderCard'>
 
@@ -51,7 +58,7 @@ export const UpcomingOrderCard = ({
 
         {/* Track Button */}
 
-        <div id="TrackBtn">
+        <div id="TrackBtn" onClick={OpenTrack}>
           <BtnPrimary title="Track" />
         </div>
 

@@ -2,9 +2,9 @@ import os
 
 import jwt
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework.generics import ListAPIView , RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListAPIView , RetrieveUpdateDestroyAPIView,UpdateAPIView
 from django.shortcuts import get_object_or_404
-from .serializers import List_UserSerializer,RegisterSerializer,EmailVerificationSerializer,LoginSerializer,ResendEmailSerializer,RequestPasswordResetEmailSerializer,SetNewPasswordSerializer,LogoutSerializer
+from .serializers import List_UserSerializer,RegisterSerializer,EmailVerificationSerializer,LoginSerializer,ResendEmailSerializer,RequestPasswordResetEmailSerializer,SetNewPasswordSerializer,LogoutSerializer,userUpdateSerializer
 from .models import User
 from rest_framework.permissions import IsAdminUser,IsAuthenticated
 from rest_framework import status,views
@@ -44,6 +44,40 @@ class ListOfUsersView(ListAPIView):
 class userDetail(RetrieveUpdateDestroyAPIView):
     queryset = User.object.all()
     serializer_class = List_UserSerializer
+    permission_classes=(IsAuthenticated,IsAdminUser)
+    lookup_field=['email']
+    def get_queryset(self):
+        user = self.request.user
+
+        return User.object.filter(username=user.username)
+class userUpdate(UpdateAPIView):
+    queryset = User.object.all()
+    serializer_class = List_UserSerializer
+    lookup_field=['email']
+
+
+
+    def update(self, instance, validated_data):
+        instance.name = validated_data.get('name', instance.name)
+        instance.save()
+        return instance
+
+class UpdateName(UpdateAPIView):
+    queryset = User.object.all()
+    serializer_class = userUpdateSerializer
+    permission_classes = (IsAuthenticated,)
+    def update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        instance.email = request.data.get("email")
+        instance.username=request.data.get("username")
+        instance.phone_number=request.data.get("phone_number")
+        print(request.data.get("phone_number"))
+        instance.save()
+        serializer = self.get_serializer(instance)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+        return Response(serializer.data)
+
 
 class RegisterView(GenericAPIView):
     serializer_class = RegisterSerializer

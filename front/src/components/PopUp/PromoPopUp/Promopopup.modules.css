@@ -1,0 +1,145 @@
+.OrderDetsMainContainer {
+  background-color: var(--colorslightffffff-100);
+  border-radius: 24px 0px 0px 24px;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 24px;
+  position: fixed;
+  right: 0;
+  z-index: 10;
+  width: 400px;
+  display: none;
+
+}
+
+.CartTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+.CartTitleFirstPart {
+  font-family: var(--text-body-large-regular-font-family);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+.CartTitleSecondPart {
+  color: #626264;
+  font-family: var(--text-body-large-regular-font-family);
+  font-size: var(--text-body-large-regular-font-size);
+  font-style: var(--text-body-large-regular-font-style);
+  font-weight: 300;
+}
+
+
+.CartUpper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.BtnBgCross {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--colorslightffffff-100);
+  border-radius: 10px;
+  height: 48px;
+  padding: 12px;
+  width: 48px;
+  border: none;
+  cursor: pointer;
+}
+
+
+.CartAddressSection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.AddLable {
+  color: #FB6D3A;
+  font-size: 12px;
+  font-family: var(--text-h3-bold-font-family);
+  font-weight: 700;
+  text-transform: uppercase;
+
+}
+
+.CartAddress {
+  color: #182135;
+  font-size: 16px;
+  font-family: var(--text-h3-bold-font-family);
+  font-weight: 700;
+
+}
+
+.CartDeliverySection {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  margin: 16px 0px;
+}
+
+.CartDeliveryDets {
+  display: flex;
+  flex-direction: column;
+  margin: 2px 48px;
+
+}
+
+.SectionLable {
+  color: #182135;
+  font-size: 20px;
+  font-family: var(--text-h3-bold-font-family);
+  font-weight: 700;
+  margin: 2px;
+
+}
+
+.DeliveryFee {
+  color: var(--colors-text-dark-626264100, #626264);
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: var(--text-h3-bold-font-family);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 24px;
+  margin: 4px 0px;
+}
+
+.OLRestName {
+  color: var(--colors-text-dark-182135100, #182135);
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-family: var(--text-h3-bold-font-family);
+
+  /* Text/H2/Bold */
+
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 32px;
+  /* 133.333% */
+}
+
+
+.POLItems {
+  display: flex;
+  flex-direction: column;
+
+}
+
+
+.POLItems >.OrderItem> .DishQuantity{
+  background-color: #F7F7F7;
+}
